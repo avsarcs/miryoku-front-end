@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with Miryoku - Front End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Built using React, React Router and SCSS, this is a fully responsive front-end design for a hypothethical artwork sharing platform. 
 
 ## Available Scripts
 
