@@ -1,4 +1,4 @@
-# Getting Started with Miryoku - Front End
+# Getting Started with Miryoku
 
 Built using React, React Router and SCSS, this is a fully responsive front-end design for a hypothethical artwork sharing platform. 
 
