@@ -1,0 +1,59 @@
+@import "./variables";
+
+@import url("https://fonts.googleapis.com/css?family=Sofia+Sans");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Unbounded");
+
+@import "./navbar";
+@import "./home";
+@import "./feed";
+
+body {
+    margin: 0;
+    background-color: $background-color;
+}
+
+// MEDIA QUERY FOR MOBILE COMPATIBILITY
+
+@media screen and (max-width: 900px) {
+
+    // TODO: Instead of making the Miryoku logo disappear, make the navigation bar a toggle menu
+    .navbar-title {
+        color: transparent;
+    }
+
+    .jump-a-line {
+        display: block;
+    }
+
+    .story-one {
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+
+}
+
+@media screen and (max-width: 780px) {
+    
+    .buttons-next-to-search-bar {
+        margin-top: 2rem;
+    }
+
+    .search-components {
+        width: min-content;
+        justify-content: center;
+    }
+
+    .submit {
+        margin-left: 0rem;
+    }
+
+    .search-bar {
+        width: 60vw;
+    }
+
+}
+
+// END OF MEDIA QUERY

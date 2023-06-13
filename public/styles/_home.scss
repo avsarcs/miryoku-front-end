@@ -1,0 +1,70 @@
+// HOME > STORY ONE
+
+.story-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    font-family: "Unbounded", sans-serif;
+    
+    h1 {
+        font-size: 5rem;
+        margin-top: 12rem;
+    }
+
+    p {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+        text-align: center;
+    }
+
+    // This styles the 'beta' subscript
+    span {
+        font-size:0.8rem;
+        font-weight: 100;
+    }
+
+}
+
+.jump-a-line {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+
+
+    margin-top: 2rem;
+    width: 15%;
+    height: 20%;
+
+    button {
+        border: 2px solid black;
+        border-radius: 0.2rem;
+        cursor: pointer;
+
+        min-width: 6rem;
+        margin: 0rem 1rem;
+        height: 2rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.3rem 1rem;
+
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+
+    }
+
+    button:hover {
+        color: white;
+        background-color: black;
+    }
+
+}
+
+// END OF HOME > STORY ONE

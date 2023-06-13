@@ -1,0 +1,5 @@
+RT => Radio Theatre
+PM => Poem
+FW => Fiction Writing
+PT => Painting
+MR => Music Recording

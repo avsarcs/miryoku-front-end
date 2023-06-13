@@ -1,0 +1,24 @@
+{
+    "_id": "75",
+    "name": "Mehmet Emin Avşar",
+    "email": "avsarmehmetemin@gmail.com",
+    "password": "xQrejsgeWfkdlwgm4728gAndmcvwRtbw835792",
+    "about": "George Lacan enthusiast. Fellow surrealist. Been arting since the dawn of my life.",
+    "skills": {
+        "isMusician": "true",
+        "isWriter": "true"
+    },
+    "level": "5",
+    "xp": "66",
+    "points": "200",
+    "achievements": ["1", "5", "8"],
+    "xpBySkill": {
+        "musicianXp": "100",
+        "writerXp": "1996"
+    },
+    "title": "Novice",
+    "stats": {
+        "fbGiven": "5",
+        "awPublished": "2"
+    }
+}
