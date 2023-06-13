@@ -1,5 +1,6 @@
 import React from "react";
 import StatsWidget from "./StatsWidget";
+import ArtworkCard from "./ArtworkCard";
 
 export default function Feed(props) {
 
@@ -172,6 +173,31 @@ export default function Feed(props) {
                 </form>
 
                 </div>
+
+                <div className="cards-container">
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[1]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
+
+                </div>
+
             </div>
         </div>
     )

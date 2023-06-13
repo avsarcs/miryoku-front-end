@@ -8,7 +8,7 @@ export default function Home(props) {
         // JSX when the user is signed in.
         return (
             <>
-                <Feed user={props.user}/>
+                <Feed user={props.user} artworks={props.artworks}/>
             </>
         )
     } else {

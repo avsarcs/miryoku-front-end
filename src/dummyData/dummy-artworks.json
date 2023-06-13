@@ -2,18 +2,41 @@
     {
     "_id": "86",
     "title": "Thou Heartless Disease, Ligma",
-    "type": "PM",
+    "type": "Poem",
     "tags": ["inspirational", "sad", "jaw dropping"],
     "owner": "75",
     "sortPriority": "100",
     "description": "This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.",
+    "longDescription": "This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.",
     "body":"Ligma, a sorrowful tale,\\nA disease that causes wail,\\nIt grips the heart and soul,\\nLeaves one feeling out of control.\\n\\nIt starts with a simple sneeze,\\nBut quickly turns into disease,\\nPainful swelling and aching,\\nLeaves one's body shaking.\\n\\nThe mind is filled with fear,\\nAs the body begins to leer,\\nTowards a fate unknown,\\nLeaving one to feel alone.\\n\\nBut still, we hold on tight,\\nTo the hope that shines so bright,\\nFor a cure may yet be found,\\nAnd this sadness may be unbound.\\n\\nThough ligma may bring us pain,\\nWe will strive to love again,\\nFor in the face of sorrow,\\nThere is always a new tomorrow.",
     "options": {
         "font-family": "Comic Sans"
     },
     "dateCreated": "2023-01-21T21:00:00.000Z",
     "dateUpdated": "2023-01-22T21:00:00.000Z",
-    "rating": "4.9",
-    "status": "Remarkable"
+    "rating": {
+        "score": "4.9",
+        "count": "120"
     }
+    },
+    {
+        "_id": "86",
+        "title": "Thou Heartless Disease, Ligma",
+        "type": "Poem",
+        "tags": ["inspirational", "sad", "jaw dropping"],
+        "owner": "75",
+        "sortPriority": "100",
+        "description": "This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.",
+        "longDescription": "This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.This poem is dedicated to Ninja who is sadly passing away due to his medical condition ligma.",
+        "body":"Ligma, a sorrowful tale,\\nA disease that causes wail,\\nIt grips the heart and soul,\\nLeaves one feeling out of control.\\n\\nIt starts with a simple sneeze,\\nBut quickly turns into disease,\\nPainful swelling and aching,\\nLeaves one's body shaking.\\n\\nThe mind is filled with fear,\\nAs the body begins to leer,\\nTowards a fate unknown,\\nLeaving one to feel alone.\\n\\nBut still, we hold on tight,\\nTo the hope that shines so bright,\\nFor a cure may yet be found,\\nAnd this sadness may be unbound.\\n\\nThough ligma may bring us pain,\\nWe will strive to love again,\\nFor in the face of sorrow,\\nThere is always a new tomorrow.",
+        "options": {
+            "font-family": "Comic Sans"
+        },
+        "dateCreated": "2023-01-21T21:00:00.000Z",
+        "dateUpdated": "2023-01-22T21:00:00.000Z",
+        "rating": {
+            "score": "4.9",
+            "count": "120"
+        }
+        }
 ]

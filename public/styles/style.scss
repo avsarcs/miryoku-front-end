@@ -11,6 +11,8 @@
 body {
     margin: 0;
     background-color: $background-color;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 // MEDIA QUERY FOR MOBILE COMPATIBILITY
