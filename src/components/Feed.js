@@ -175,27 +175,11 @@ export default function Feed(props) {
                 </div>
 
                 <div className="cards-container">
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[1]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-                    <ArtworkCard artwork={props.artworks[0]}></ArtworkCard>
-
+                    {
+                        props.artworks.map((artwork) => {return (
+                            <ArtworkCard artwork={artwork} />
+                        )})
+                    }
                 </div>
 
             </div>
