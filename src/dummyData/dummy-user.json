@@ -5,10 +5,7 @@
         "email": "avsarmehmetemin@gmail.com",
         "password": "xQrejsgeWfkdlwgm4728gAndmcvwRtbw835792",
         "about": "George Lacan enthusiast. Fellow surrealist. Been arting since the dawn of my life.",
-        "skills": {
-            "isMusician": "true",
-            "isWriter": "true"
-        },
+        "skills": ["Musician", "Writer"],
         "level": "5",
         "xp": "66",
         "points": "200",

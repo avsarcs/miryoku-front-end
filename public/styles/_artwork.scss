@@ -42,12 +42,12 @@
     display: block;
     position: absolute;
     bottom: -1.3em;
-    width: 40%;
+    width: 10vw;
     left: 0;
 }
 
-.display-line-break {
-    white-space: pre-line;
+.artwork-tags {
+    font-family: "Abel", sans-serif;
 }
 
 .description-separator {
@@ -56,5 +56,17 @@
 }
 
 .artwork-body {
-    white-space: pre-line;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.artwork-body::after {
+    content: "";
+    height: 2px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    bottom: -1.3em;
+    width: 10vw;
+    left: 0;
 }

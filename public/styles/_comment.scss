@@ -1,0 +1,74 @@
+.comment-box {
+    // background-color: white;
+    // border: 2px solid black;
+    width:40vw;
+    min-width: 300px;
+    padding: 0.3em 1em;
+    padding-bottom: 0.5em;
+    margin: 1em 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.12em;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+
+
+}
+
+@media screen and (max-width: 1390px) {
+    .comment-box {
+        width: 570px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .comment-box {
+        width: 70vw;
+    }
+}
+
+.commenter-details {
+    display: flex;
+    margin-bottom: 0.5em;
+}
+
+.commenter-detail {
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+.toggle-replies-button {
+    padding: 4px 12px;
+    border-radius: 8%;
+    cursor: pointer;
+    margin-top: 0.6em;
+    background: none;
+    color: inherit;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.toggle-replies-button:hover {
+    font-weight: bold;
+}
+
+.reply-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1em;
+    padding-top: 0.3em;
+    padding-left: 3em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.reply-details {
+    display: flex;
+    color: rgb(61, 60, 60);
+}
+
+.reply-detail {
+    margin-right:1em;
+}

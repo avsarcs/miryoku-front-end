@@ -1,14 +1,16 @@
 [
     {
     "_id": "20123",
-    "artwork": "86",
-    "owner": "75",
+    "artworkID": "86",
+    "commenterID": "75",
+    "dateCreated": "2023-01-21T21:00:00.000Z",
     "body": "Agreed, brother. It is so sad that Ninja is dying of ligma."
     },
     {
     "_id": "20124",
-    "artwork": "86",
-    "owner": "75",
+    "artworkID": "86",
+    "commenterID": "75",
+    "dateCreated": "2023-01-21T21:00:00.000Z",
     "body": "I am personally not all that obsessed about the poem. But, great work! God knows you could file me a lawsuit for hurting your feelings if I told my actual opinion..."
     }
 ]
