@@ -47,15 +47,19 @@ export default function Artwork(props) {
             adjustCommentBarHeight()
         }
 
-        commentBar.addEventListener("input", handleInput)
+        if (commentBar) {
+            commentBar.addEventListener("input", handleInput)
+        }
 
         return () => {
-            commentBar.removeEventListener("input", handleInput)
+            if (commentBar) {
+                commentBar.removeEventListener("input", handleInput)
+            }
         }
 
     }, [])
 
-    // Change comment string when the user writes new stuff.
+    // Change comment object when the user writes new stuff.
     function handleComment(e) {
 
         const { value } = e.target
@@ -99,7 +103,7 @@ export default function Artwork(props) {
                 <div className="artwork-tags">
                     {
                         props.artwork.tags.map( (tag) => (
-                            <label className="cool-label" style={{fontSize: "0.9em"}} >{tag}</label>
+                            <label key={tag} className="cool-label" style={{fontSize: "0.9em"}} >{tag}</label>
                         ) )
                     }
                 </div>
@@ -108,12 +112,12 @@ export default function Artwork(props) {
                 </span>
                 <div className="artwork-body" style={bodyStyle}>
 
-                    {bodyLines.map((line) => {
+                    {bodyLines.map((line, index) => {
                         if (line === "") {
-                            return (<br/>)
+                            return (<br key={index}/>)
                         }
                         else { return (
-                        <div>
+                        <div key={index}>
                             <ReactMarkdown>{line}</ReactMarkdown>
                         </div>
                         )}
@@ -139,7 +143,7 @@ export default function Artwork(props) {
                         {
                             comments.map(
                                 comment => (
-                                    <Comment comment={comment}/>
+                                    <Comment key={comment._id} comment={comment} user={props.user} hasAuth={props.hasAuth}/>
                                 )
                             )
                         }
