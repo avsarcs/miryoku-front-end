@@ -5,7 +5,6 @@ import Tabs from "../components/Tabs";
 import Comments from "../dummyData/dummy-comments.json"
 import Comment from "../components/Comment";
 import { useState } from "react";
-import { Form } from "react-router-dom";
 
 export default function Artwork(props) {
 
@@ -18,7 +17,12 @@ export default function Artwork(props) {
 
     const comments = Comments.filter( comment => parseInt(comment.artworkID) === parseInt(props.artwork._id));
 
-    const [comment, setComment] = useState("");
+    const [comment, setComment] = useState({
+        "artworkID": props.artwork._id,
+        "commenterID": props.hasAuth ? props.user._id : -1,
+        "dateCreated": (new Date()).toISOString(),
+        "body": ""
+    });
 
     const [commentButtonStyle, setCommentButtonStyle] = useState({
         "display": "none"
@@ -55,7 +59,12 @@ export default function Artwork(props) {
     function handleComment(e) {
 
         const { value } = e.target
-        setComment( (comment) => {return value} );
+        setComment( (comment) => {
+            return {
+                ...comment,
+                "body": value
+            }
+        });
     }
 
     // Show the submit comment button only if the comment bar is clicked.
@@ -71,6 +80,7 @@ export default function Artwork(props) {
     }
 
     function commentBarUnclicked(e) {
+
         setCommentBarStyle({
             "borderColor": "lightgray"
         })
@@ -116,7 +126,7 @@ export default function Artwork(props) {
                             props.hasAuth && (
                             <form>
                                 <div className="comment-submit-container">
-                                    <textarea ref={commentBarRef} rows="1" id="commentTextArea" className="comment-bar" name="commentText" style={commentBarStyle} value={comment}
+                                    <textarea ref={commentBarRef} rows="1" id="commentTextArea" className="comment-bar" name="commentText" style={commentBarStyle} value={comment.body}
                                         placeholder="Write a comment.." onClick={commentBarClicked} onChange={handleComment}/>
                                     <div className="comment-submit-buttons" style={commentButtonStyle}>
                                         <button className="comment-button" onClick={commentBarUnclicked} type="button">Cancel</button>
