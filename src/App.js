@@ -16,7 +16,7 @@ export default function App() {
 
     <Routes>
         <Route path="/" element={<Home hasAuth={hasAuth} user={User[0]} artworks={Artworks} />}/>
-        <Route path="artwork" element={<Artwork artwork={Artworks[0]} />}/>
+        <Route path="artwork" element={<Artwork artwork={Artworks[0]} hasAuth={hasAuth} user={User[0]} />}/>
     </Routes>
         </>
     )

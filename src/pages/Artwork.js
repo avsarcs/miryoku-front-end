@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useRef } from "react"
 import Users from "../dummyData/dummy-user.json"
 import ReactMarkdown from 'react-markdown'
 import Tabs from "../components/Tabs";
 import Comments from "../dummyData/dummy-comments.json"
 import Comment from "../components/Comment";
 import { useState } from "react";
+import { Form } from "react-router-dom";
 
 export default function Artwork(props) {
 
@@ -17,7 +18,67 @@ export default function Artwork(props) {
 
     const comments = Comments.filter( comment => parseInt(comment.artworkID) === parseInt(props.artwork._id));
 
-    const [commentsOpen, setCommentsOpen] = useState(false)
+    const [comment, setComment] = useState("");
+
+    const [commentButtonStyle, setCommentButtonStyle] = useState({
+        "display": "none"
+    })
+
+    const commentBarRef = useRef(null)
+
+    const [commentBarStyle, setCommentBarStyle] = useState({
+        "borderColor": "lightgray"
+    })
+
+    // Make the comment bar grow or shrink accordingly as new lines are entered or deleted.
+    React.useEffect(() => {
+        const commentBar = commentBarRef.current
+
+        const adjustCommentBarHeight = () => {
+            commentBar.style.height = "auto"
+            commentBar.style.height = `${commentBar.scrollHeight}px`
+        }
+
+        const handleInput = () => {
+            adjustCommentBarHeight()
+        }
+
+        commentBar.addEventListener("input", handleInput)
+
+        return () => {
+            commentBar.removeEventListener("input", handleInput)
+        }
+
+    }, [])
+
+    // Change comment string when the user writes new stuff.
+    function handleComment(e) {
+
+        const { value } = e.target
+        setComment( (comment) => {return value} );
+    }
+
+    // Show the submit comment button only if the comment bar is clicked.
+    function commentBarClicked(e) {
+
+        setCommentBarStyle({
+            "borderColor": "black"
+        })
+
+        setCommentButtonStyle({
+            "display": "block"
+        })
+    }
+
+    function commentBarUnclicked(e) {
+        setCommentBarStyle({
+            "borderColor": "lightgray"
+        })
+
+        setCommentButtonStyle({
+            "display": "none"
+        })
+    }
 
     return (
         <div className="all-container">
@@ -51,6 +112,20 @@ export default function Artwork(props) {
                 </div>
                 <Tabs>
                     <div label="Comments">
+                        {
+                            props.hasAuth && (
+                            <form>
+                                <div className="comment-submit-container">
+                                    <textarea ref={commentBarRef} rows="1" id="commentTextArea" className="comment-bar" name="commentText" style={commentBarStyle} value={comment}
+                                        placeholder="Write a comment.." onClick={commentBarClicked} onChange={handleComment}/>
+                                    <div className="comment-submit-buttons" style={commentButtonStyle}>
+                                        <button className="comment-button" onClick={commentBarUnclicked} type="button">Cancel</button>
+                                        <button className="comment-button" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                            )
+                        }
                         {
                             comments.map(
                                 comment => (

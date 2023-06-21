@@ -1,3 +1,42 @@
+@import "./variables";
+
+.comment-submit-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-button {
+    margin-top: 1em;
+    margin-right: 1em;
+    background: black;
+    color: $background-color-2;
+    border-style: solid;
+    border-color: black;
+    padding: 0.2em 0.3em;
+    border-radius: 3%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.comment-bar {
+    display: block;
+    resize: none;
+    border-width: 0 0 2px 0;
+    font-size: 0.9em;
+    background: none;
+    border-style: solid;
+    width: 60%;
+    height: auto;
+    max-height: 15em;
+    overflow: auto;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: border-color 1s ease 0s;
+}
+
+.comment-bar:focus {
+    outline: none;
+}
+
 .comment-box {
     // background-color: white;
     // border: 2px solid black;
@@ -43,6 +82,8 @@
 .toggle-replies-button {
     padding: 4px 12px;
     border-radius: 8%;
+    border-style: solid;
+    
     cursor: pointer;
     margin-top: 0.6em;
     background: none;
@@ -52,6 +93,7 @@
 
 .toggle-replies-button:hover {
     font-weight: bold;
+    padding: 4px 7.5px;
 }
 
 .reply-container {
