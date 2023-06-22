@@ -20,6 +20,7 @@ export default function Artwork(props) {
     const [comment, setComment] = useState({
         "artworkID": props.artwork._id,
         "commenterID": props.hasAuth ? props.user._id : -1,
+        "likes": 0,
         "dateCreated": (new Date()).toISOString(),
         "body": ""
     });

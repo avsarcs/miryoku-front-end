@@ -18,6 +18,8 @@
         "stats": {
             "fbGiven": "5",
             "awPublished": "2"
-        }
+        },
+        "likedComments": ["20123"],
+        "likedReplies": ["55"]
     }
 ]

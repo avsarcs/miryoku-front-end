@@ -8,6 +8,10 @@ export default function Comment(props) {
 
     const commentID = parseInt(comment._id);
 
+    const [userLikedComment, setUserLikedComment] = useState(
+        props.user.likedComments.filter( commentID => parseInt(commentID) === parseInt(comment._id))[0] != null
+    )
+
     // Represent a reply as an object (going to be stored in the database)
     const [ reply, setReply ] = useState({
         "parentID": comment._id,
@@ -52,6 +56,27 @@ export default function Comment(props) {
         }
 
     }, [])
+
+
+    // Like comment
+    // Written as a placeholder in front-end because server-side code is required to actually implement this functionality.
+    function likeComment(e) {
+        // Add the comment id to user's likedComments array
+
+        setUserLikedComment(true)
+
+        // Increment like
+    }
+
+    // Unlike comment
+    // Written as a placeholder in front-end because server-side code is required to actually implement this functionality.
+    function unlikeComment(e) {
+        // Remove the comment id from user's likedComments array
+
+        setUserLikedComment(false)
+
+        // Decrement like
+    }
 
     // Change reply object when the user writes new stuff.
     function handleReply(e) {
@@ -107,6 +132,12 @@ export default function Comment(props) {
             <div className='comment-body'>
                 {comment.body}
             </div>
+            <div className='comment-like-container'>
+                    { "👍" }
+                    { comment.likes }
+                <button type='button' className='like-button' onClick={userLikedComment ? unlikeComment : likeComment}>
+                    {userLikedComment ? "Unlike" : "Like"}</button>
+            </div>
             {
                 props.hasAuth && (
                     <form>
@@ -136,7 +167,7 @@ export default function Comment(props) {
 
                 // Render the replies only if there is any and the replies have been opened.
                 replyCount > 0 && ( repliesOpen &&
-                    ( replies.map( (reply) => <Reply key={reply._id} reply={reply} /> ) ) )
+                    ( replies.map( (reply) => <Reply key={reply._id} reply={reply} user={props.user} /> ) ) )
             }
         </div>
     )
