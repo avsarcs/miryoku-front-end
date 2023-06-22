@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import Reply from './Reply';
 import Users from '../dummyData/dummy-user.json'
-import Replies  from '../dummyData/dummy-replies.json'    
+import Replies  from '../dummyData/dummy-replies.json'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';  
 
 export default function Comment(props) {
     const { comment } = props;
@@ -131,7 +132,7 @@ export default function Comment(props) {
                 <div className='commenter-detail'> | Level {level} </div>
             </div>
             <div className='comment-body'>
-                {comment.body}
+                <ReactMarkdown>{comment.body}</ReactMarkdown>
             </div>
             <div className='comment-like-container'>
                     { "👍" }

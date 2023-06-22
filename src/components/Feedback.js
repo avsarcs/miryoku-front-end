@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import Reply from './Reply';
 import Users from '../dummyData/dummy-user.json'
 import Replies  from '../dummyData/dummy-replies.json'   
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 import StarRating from './StarRating';
 
@@ -114,7 +115,7 @@ export default function Feedback(props) {
                 <div className='feedback-detail'> | Level {level} </div>
             </div>
             <div className='feedback-body'>
-                {feedback.body}
+                <ReactMarkdown>{feedback.body}</ReactMarkdown>
             </div>
             {/* This is where the user will rate the usefulness of the feedback */}
             {
