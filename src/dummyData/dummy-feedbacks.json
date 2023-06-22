@@ -3,8 +3,10 @@
         "_id": "331",
         "artworkID": "86",
         "ownerID": "75",
-        "rating": "4",
-        "usefulness": "6.78",
+        "usefulness": {
+            "rating": "6.78",
+            "count": "20"
+        },
         "body": "Use more sensory imagery. Avoid general terms like 'sorrowful' and 'out of control', use words that conjure up a sensation in the reader, not mere hollow concepts.",
         "dateCreated": "2023-01-21T21:00:00.000Z",
         "dateUpdated": "2023-01-22T21:00:00.000Z"
@@ -13,8 +15,10 @@
         "_id": "332",
         "artworkID": "86",
         "ownerID": "75",
-        "rating": "1",
-        "usefulness": "6.78",
+        "usefulness": {
+            "rating": "3.2",
+            "count": "4"
+        },
         "body": "I understand that the intention is to make a joke poem here, but the actual effort to deliberate that brain-dead joke of 'Ninja has ligma' is non existent.",
         "dateCreated": "2023-01-21T21:00:00.000Z",
         "dateUpdated": "2023-01-22T21:00:00.000Z"

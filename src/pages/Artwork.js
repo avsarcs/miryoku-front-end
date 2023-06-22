@@ -95,6 +95,67 @@ export default function Artwork(props) {
         })
     }
 
+    // Make stars glow orange
+    const [userRating, setUserRating] = useState(parseInt(props.user.awRatings[props.artwork._id]))
+
+    const [ratingStarsState, setRatingStarsState] = useState({
+        "star1": "fa-star-o",
+        "star2": "fa-star-o",
+        "star3": "fa-star-o",
+        "star4": "fa-star-o",
+        "star5": "fa-star-o"
+    })
+
+    React.useEffect( () => {
+        resetStarGlow()
+    }
+    , [userRating])
+
+    function updateUserRating(e) {
+        const newUserRating = e.currentTarget.className
+            .split(" ")
+            .filter((className) => !isNaN(className[0]))[0][0]
+        
+        setUserRating(userRating => newUserRating)
+
+        console.log("You rated the artwork " + newUserRating + " out of 5 stars")
+        // Obviously change this part with a database UPDATE operation when you write the backend
+    }
+
+    function resetStarGlow() {
+
+        setRatingStarsState((prevState) => {
+            const updatedState = { ...prevState }
+            for (const key in updatedState) {
+              if (parseInt(key[4]) <= userRating) {
+                updatedState[key] = "fa-star"
+              } else {
+                updatedState[key] = "fa-star-o"
+              }
+            }
+            return updatedState;
+          })
+
+    }
+
+    function makeStarsGlow(e) {
+        const whichStar = parseInt(
+            e.currentTarget.className
+              .split(" ")
+              .filter((className) => !isNaN(className[0]))[0][0]
+          )
+        
+          setRatingStarsState((prevState) => {
+            const updatedState = { ...prevState }
+            for (const key in updatedState) {
+              if (parseInt(key[4]) <= whichStar) {
+                updatedState[key] = "fa-star";
+              }
+            }
+            return updatedState
+          })
+    }
+
     return (
         <div className="all-container">
             <div className="artwork-container">
@@ -124,6 +185,14 @@ export default function Artwork(props) {
                         )}
                     }) }
 
+                </div>
+                <div className="rate-container">
+
+                    <span className={"fa " + ratingStarsState.star1 + " 1-star"} onClick={updateUserRating} onMouseOver={makeStarsGlow} onMouseLeave={resetStarGlow}></span>
+                    <span className={"fa " + ratingStarsState.star2 + " 2-star"} onClick={updateUserRating} onMouseOver={makeStarsGlow} onMouseLeave={resetStarGlow}></span>
+                    <span className={"fa " + ratingStarsState.star3 + " 3-star"} onClick={updateUserRating} onMouseOver={makeStarsGlow} onMouseLeave={resetStarGlow}></span>
+                    <span className={"fa " + ratingStarsState.star4 + " 4-star"} onClick={updateUserRating} onMouseOver={makeStarsGlow} onMouseLeave={resetStarGlow}></span>
+                    <span className={"fa " + ratingStarsState.star5 + " 5-star"} onClick={updateUserRating} onMouseOver={makeStarsGlow} onMouseLeave={resetStarGlow}></span>
                 </div>
                 <Tabs>
                     <div label="Comments">

@@ -19,7 +19,11 @@
             "fbGiven": "5",
             "awPublished": "2"
         },
+        "awRatings": {
+            "86": "2"
+        },
         "likedComments": ["20123"],
-        "likedReplies": ["55"]
+        "likedCommentReplies": ["55"],
+        "likedFbReplies" : ["1"]
     }
 ]

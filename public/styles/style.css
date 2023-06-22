@@ -494,6 +494,20 @@
   left: 0;
 }
 
+.fa-star, .fa-star-o {
+  color: orange;
+  cursor: pointer;
+  margin-right: 0.5em;
+}
+
+.checked {
+  color: orange;
+}
+
+.unchecked {
+  color: black;
+}
+
 .tab-list {
   display: flex;
   padding: 0;

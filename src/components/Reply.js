@@ -5,12 +5,15 @@ export default function Reply(props) {
 
     const { reply, user } = props;
 
+    const replyIsForComment = reply.for === "comment"
+
     const [userLikedReply, setUserLikedReply] = useState(
-        user.likedReplies.filter( replyID => parseInt(replyID) === parseInt(reply._id))[0] != null
+        reply.for === "comment" ? user.likedCommentReplies.filter( replyID => parseInt(replyID) === parseInt(reply._id))[0] != null
+            : user.likedCommentReplies.filter( replyID => parseInt(replyID) === parseInt(reply._id))[0] != null
     )
 
     function likeReply(e) {
-        // Add the reply id to user's likedReplies array
+        // Add the reply id to user's likedCommentReplies or likedFbReplies array
 
         setUserLikedReply(true)
         
@@ -18,7 +21,7 @@ export default function Reply(props) {
     }
 
     function unlikeReply(e) {
-        // Remove the reply id form user's likedReplies array
+        // Remove the reply id form user's likedCommentReplies or likedFbReplies array
 
         setUserLikedReply(false)
 
