@@ -17,6 +17,7 @@ export default function Comment(props) {
         "parentID": comment._id,
         "body": "",
         "ownerID": props.user._id,
+        "for": "comment",
         "dateCreated": (new Date()).toISOString(),
         "dateUpdated": (new Date()).toISOString()
     })
@@ -114,7 +115,7 @@ export default function Comment(props) {
     }
 
     // Fetch replies
-    const replies = Replies.filter( reply => parseInt(reply.parentID) === commentID)
+    const replies = Replies.filter( reply => parseInt(reply.parentID) === commentID).filter(reply => reply.for === "comment")
     const replyCount = replies.length
 
     // Keep track of whether the reply section is open or not
@@ -135,8 +136,10 @@ export default function Comment(props) {
             <div className='comment-like-container'>
                     { "👍" }
                     { comment.likes }
-                <button type='button' className='like-button' onClick={userLikedComment ? unlikeComment : likeComment}>
-                    {userLikedComment ? "Unlike" : "Like"}</button>
+                    { props.hasAuth &&
+                (<button type='button' className='like-button' onClick={userLikedComment ? unlikeComment : likeComment}>
+                    {userLikedComment ? "Unlike" : "Like"}</button>)
+                    }
             </div>
             {
                 props.hasAuth && (
@@ -167,7 +170,7 @@ export default function Comment(props) {
 
                 // Render the replies only if there is any and the replies have been opened.
                 replyCount > 0 && ( repliesOpen &&
-                    ( replies.map( (reply) => <Reply key={reply._id} reply={reply} user={props.user} /> ) ) )
+                    ( replies.map( (reply) => <Reply key={reply._id} reply={reply} user={props.user} hasAuth={props.hasAuth} /> ) ) )
             }
         </div>
     )

@@ -24,6 +24,9 @@
         },
         "likedComments": ["20123"],
         "likedCommentReplies": ["55"],
-        "likedFbReplies" : ["1"]
+        "feedbackRatings": {
+            "331": "6"
+        },
+        "likedFbReplies" : ["66"]
     }
 ]

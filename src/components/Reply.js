@@ -5,11 +5,9 @@ export default function Reply(props) {
 
     const { reply, user } = props;
 
-    const replyIsForComment = reply.for === "comment"
-
     const [userLikedReply, setUserLikedReply] = useState(
         reply.for === "comment" ? user.likedCommentReplies.filter( replyID => parseInt(replyID) === parseInt(reply._id))[0] != null
-            : user.likedCommentReplies.filter( replyID => parseInt(replyID) === parseInt(reply._id))[0] != null
+            : user.likedFbReplies.filter( replyID => parseInt(replyID) === parseInt(reply._id))[0] != null
     )
 
     function likeReply(e) {
@@ -40,8 +38,8 @@ export default function Reply(props) {
             <div className='reply-body'>{reply.body}</div>
             <div className='reply-details'>
                 <div className='reply-like-container'> { "👍" } { reply.likes }
-                    <button type='button' className='reply-like-button' onClick={userLikedReply ? unlikeReply : likeReply}>
-                    {userLikedReply ? "Unlike" : "Like"}</button>
+                    { props.hasAuth && (<button type='button' className='reply-like-button' onClick={userLikedReply ? unlikeReply : likeReply}>
+                    {userLikedReply ? "Unlike" : "Like"}</button>)}
                     </div>
             </div>
         </div>

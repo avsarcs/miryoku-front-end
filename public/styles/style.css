@@ -508,6 +508,11 @@
   color: black;
 }
 
+.login-warning {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.85em;
+}
+
 .tab-list {
   display: flex;
   padding: 0;
@@ -536,7 +541,7 @@
   flex-direction: column;
 }
 
-.comment-button, .reply-button, .like-button {
+.comment-button, .reply-button, .like-button, .feedback-button {
   margin-top: 1em;
   margin-right: 1em;
   background: black;
@@ -548,7 +553,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.comment-bar, .reply-bar {
+.comment-bar, .reply-bar, .feedback-bar {
   display: block;
   resize: none;
   border-width: 0 0 2px 0;
@@ -607,11 +612,11 @@
   margin-top: 1em;
 }
 
-.comment-bar:focus, .reply-bar:focus {
+.comment-bar:focus, .reply-bar:focus, .feedback-bar:focus {
   outline: none;
 }
 
-.comment-box {
+.comment-box, .feedback-box {
   width: 40vw;
   min-width: 300px;
   padding: 0.3em 1em;
@@ -678,6 +683,84 @@
 
 .reply-detail {
   margin-right: 1em;
+}
+
+.comment-submit-container, .reply-submit-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-button, .reply-button, .like-button {
+  margin-top: 1em;
+  margin-right: 1em;
+  background: black;
+  color: #FFEFD5;
+  border-style: solid;
+  border-color: black;
+  padding: 0.2em 0.3em;
+  border-radius: 3%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.comment-bar, .reply-bar {
+  display: block;
+  resize: none;
+  border-width: 0 0 2px 0;
+  font-size: 0.9em;
+  background: none;
+  border-style: solid;
+  width: 60%;
+  height: auto;
+  max-height: 15em;
+  overflow: auto;
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: border-color 1s ease 0s;
+}
+
+.feedback-bar {
+  border-width: 2px;
+  padding: 1em 1em;
+  background-color: Mintcream;
+}
+
+.feedback-box {
+  width: 40vw;
+  min-width: 300px;
+  margin: 1em 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: Mintcream;
+  height: auto;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.12em;
+  border-radius: 5px;
+}
+
+.usefulness-rating-container {
+  font-style: italic;
+  margin-top: 1em;
+  font-size: 0.85em;
+}
+
+@media screen and (max-width: 1390px) {
+  .feedback-box {
+    width: 570px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .feedback-box {
+    width: 70vw;
+  }
+}
+.feedback-details {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+.feedback-detail {
+  margin-right: 1em;
+  font-weight: bold;
 }
 
 body {
