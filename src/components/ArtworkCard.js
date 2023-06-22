@@ -1,11 +1,13 @@
 import React from "react";
 import Users from "../dummyData/dummy-user.json"
+import { Link } from "react-router-dom"
 
 export default function ArtworkCard(props) {
 
     const user = Users.filter( user => parseInt(user._id) === parseInt( props.artwork.ownerID ) )[0]
 
     return (
+        <Link to={"artwork/" + props.artwork._id} style={{all: "unset"}}>
         <div className="artwork-card">
             <div className="card-artwork-info">
                 <h1> {props.artwork.title} </h1>
@@ -17,5 +19,6 @@ export default function ArtworkCard(props) {
                 <div className="detail">{props.artwork.rating.score} / 5.0 ({props.artwork.rating.count})</div>
             </div>
         </div>
+        </Link>
     )
 }

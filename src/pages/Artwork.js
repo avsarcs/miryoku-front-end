@@ -3,6 +3,8 @@ import Users from "../dummyData/dummy-user.json"
 import ReactMarkdown from 'react-markdown'
 import Tabs from "../components/Tabs";
 
+import Artworks from "../dummyData/dummy-artworks.json"
+
 import Comments from "../dummyData/dummy-comments.json"
 import Comment from "../components/Comment";
 
@@ -12,22 +14,27 @@ import Feedback from "../components/Feedback"
 import StarRating from "../components/StarRating";
 
 import { useState } from "react";
+import { useParams } from "react-router-dom"
 
 export default function Artwork(props) {
 
-    const titleStyle = props.artwork.titleStyle;
-    const bodyStyle = props.artwork.bodyStyle;
+    const { id } = useParams()
+    console.log(id)
+    const artwork = Artworks.filter((_artwork) => _artwork._id === id)[0]
 
-    const bodyLines = props.artwork.body.split("\\n");
+    const titleStyle = artwork.titleStyle;
+    const bodyStyle = artwork.bodyStyle;
 
-    const user = Users.filter( user => parseInt(user._id) === parseInt( props.artwork.ownerID ) )[0]
+    const bodyLines = artwork.body.split("\\n");
+
+    const user = Users.filter( user => parseInt(user._id) === parseInt( artwork.ownerID ) )[0]
 
     // Configure the forms for new comment and new feedback
-    const comments = Comments.filter( comment => parseInt(comment.artworkID) === parseInt(props.artwork._id));
-    const feedbacks = Feedbacks.filter( feedback => parseInt(feedback.artworkID) === parseInt(props.artwork._id) )
+    const comments = Comments.filter( comment => parseInt(comment.artworkID) === parseInt(artwork._id));
+    const feedbacks = Feedbacks.filter( feedback => parseInt(feedback.artworkID) === parseInt(artwork._id) )
 
     const [comment, setComment] = useState({
-        "artworkID": props.artwork._id,
+        "artworkID": artwork._id,
         "commenterID": props.hasAuth ? props.user._id : -1,
         "likes": 0,
         "dateCreated": (new Date()).toISOString(),
@@ -35,7 +42,7 @@ export default function Artwork(props) {
     });
 
     const [feedback, setFeedback] = useState({
-        "artworkID": props.artwork._id,
+        "artworkID": artwork._id,
         "ownerID": props.hasAuth ? props.user._id : -1,
         "usefulness": {
             "rating": 0,
@@ -155,23 +162,23 @@ export default function Artwork(props) {
         console.log("[PLACEHOLDER] Take the rating and make the updates to the artwork's rating..")
     }
 
-    const [userRating, setUserRating] = useState(parseInt(props.user.awRatings[props.artwork._id]))
+    const [userRating, setUserRating] = useState(parseInt(props.user.awRatings[artwork._id]))
 
     return (
         <div className="all-container">
             <div className="artwork-container">
-                <div className="artwork-title" style={titleStyle}>{props.artwork.title}</div>
-                <div className="artwork-info" style={titleStyle}>by {user.name} &emsp; &emsp; {props.artwork.type}📖
-                    &emsp;&emsp; <div className="jump-a-line"/> {props.artwork.rating.score} / 5.0 ({props.artwork.rating.count})</div>
+                <div className="artwork-title" style={titleStyle}>{artwork.title}</div>
+                <div className="artwork-info" style={titleStyle}>by {user.name} &emsp; &emsp; {artwork.type}📖
+                    &emsp;&emsp; <div className="jump-a-line"/> {artwork.rating.score} / 5.0 ({artwork.rating.count})</div>
                 <div className="artwork-tags">
                     {
-                        props.artwork.tags.map( (tag) => (
+                        artwork.tags.map( (tag) => (
                             <label key={tag} className="cool-label" style={{fontSize: "0.9em"}} >{tag}</label>
                         ) )
                     }
                 </div>
                 <span className="long-description">
-                    {props.artwork.longDescription}
+                    {artwork.longDescription}
                 </span>
                 <div className="artwork-body" style={bodyStyle}>
 
@@ -193,6 +200,7 @@ export default function Artwork(props) {
                 {
                     !(props.hasAuth) && (<i className="login-warning">Login to be able to rate the artwork, comment, reply to other people and more.</i>)
                 }
+                <div className="tabs-wrapper">
                 <Tabs>
                     <div label="Comments">
                         {
@@ -241,7 +249,7 @@ export default function Artwork(props) {
                          }
                     </div>
                 </Tabs>
-
+                </div>
             </div>
         </div>
     )
