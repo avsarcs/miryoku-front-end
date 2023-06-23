@@ -3,7 +3,7 @@ import Reply from './Reply';
 import Users from '../dummyData/dummy-user.json'
 import Replies  from '../dummyData/dummy-replies.json'   
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-
+import { Link } from "react-router-dom"
 import StarRating from './StarRating';
 
 export default function Feedback(props) {
@@ -115,7 +115,14 @@ export default function Feedback(props) {
                 <div className='feedback-detail'> | Level {level} </div>
             </div>
             <div className='feedback-body'>
-                <ReactMarkdown>{feedback.body}</ReactMarkdown>
+                { 
+                props.isLinked ?
+                    (<Link style={{"all": "unset", "cursor": "pointer"}} target="_blank" to={"/artwork/" + feedback.artworkID}>
+                        <ReactMarkdown>{feedback.body}</ReactMarkdown>
+                        </Link>)
+                    :
+                    (<ReactMarkdown>{feedback.body}</ReactMarkdown>)
+                }
             </div>
             {/* This is where the user will rate the usefulness of the feedback */}
             {

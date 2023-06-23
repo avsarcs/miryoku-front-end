@@ -132,7 +132,10 @@ export default function Comment(props) {
                 <div className='commenter-detail'> | Level {level} </div>
             </div>
             <div className='comment-body'>
-                <ReactMarkdown>{comment.body}</ReactMarkdown>
+                <ReactMarkdown
+                    style={{"marginTop": "0", "marginBottom": "0", "paddingTop": "0", "paddingBottom": "0"}}>
+                        {comment.body}
+                </ReactMarkdown>
             </div>
             <div className='comment-like-container'>
                     { "👍" }

@@ -7,7 +7,7 @@ export default function ArtworkCard(props) {
     const user = Users.filter( user => parseInt(user._id) === parseInt( props.artwork.ownerID ) )[0]
 
     return (
-        <Link to={"artwork/" + props.artwork._id} style={{all: "unset"}}>
+        <Link to={"/artwork/" + props.artwork._id} style={{all: "unset"}}>
         <div className="artwork-card">
             <div className="card-artwork-info">
                 <h1> {props.artwork.title} </h1>

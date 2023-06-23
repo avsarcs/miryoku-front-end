@@ -6,8 +6,8 @@ export default function StatsWidget(props) {
     const levelProgress = ( props.user.xp / levelBoundaries[props.user.level - 1] ) * 100
 
     return (
-        <div className="stats-widget-container">
-            Your current stats:<br />
+        <div className="stats-widget-container" style={{"width": props.width}}>
+            Current stats:<br />
             <span className="user-stat">| {props.user.title}</span>
             <span className="user-stat"><div className="jump-a-line"/>| Points: {props.user.points}</span>
             <span className="user-stat"><div className="jump-a-line"/>| Level: {props.user.level}</span>

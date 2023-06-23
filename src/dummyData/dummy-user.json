@@ -15,6 +15,16 @@
             "writerXp": "1996"
         },
         "title": "Novice",
+        "profileStyle": {
+            "nameStyle": {
+                "fontSize": "5em",
+                "fontFamily": "Lobster, Haettenschweiler, 'Arial Narrow Bold', sans-serif"
+            },
+            "descriptionStyle": {
+                
+            }
+        },
+        "featuredFeedback": ["332"],
         "stats": {
             "fbGiven": "5",
             "awPublished": "2"

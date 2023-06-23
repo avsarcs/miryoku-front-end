@@ -2,6 +2,11 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Unbounded");
 @import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
+@import url("https://fonts.googleapis.com/css?family=Barlow");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Abel");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
@@ -398,7 +403,6 @@
   font-size: 1.2rem;
   font-family: "Abel";
   letter-spacing: 0.05rem;
-  width: 50%;
   padding: 1.5rem;
   box-shadow: 12px 12px 2px 1px rgba(4, 4, 129, 0.2);
   border: 4px ridge rgb(92, 87, 84);
@@ -422,6 +426,55 @@
     background-position: 0% 50%;
   }
 }
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  min-height: 90vh;
+  background-color: #FFEFD5;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.epic-name-ego-bloat {
+  margin: 2rem 0 1rem 0;
+}
+
+.epic-user-about {
+  font-size: 1.05em;
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  border-radius: 2px;
+  max-width: 80%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-bottom: 1em;
+}
+
+.skills-display {
+  display: flex;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.artwork-feature {
+  display: flex;
+  flex-flow: center;
+  max-width: 100%;
+}
+
+.feedback-feature {
+  display: flex;
+  justify-content: center;
+}
+
 .all-container {
   display: flex;
   flex-direction: column;
@@ -522,7 +575,12 @@
   padding: 0;
 }
 
-.tab-list-item {
+.tab-list-profile {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-list-item, .tab-list-item-profile {
   border-radius: 5%;
   list-style: none;
   margin: 0.2em 0.3em;
@@ -535,7 +593,20 @@
   padding: 0.4em 1.4em;
 }
 
-.tab-list-active {
+.tab-list-item-profile {
+  border-radius: 5%;
+  list-style: none;
+  margin: 0.3em 0.3em;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0.4em 1.4em;
+}
+
+.tab-list-active, .tab-list-active-profile {
   color: #FFEFD5;
   background-color: black;
 }

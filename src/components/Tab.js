@@ -7,6 +7,7 @@ class Tab extends Component {
         activeTab: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
         onClick: PropTypes.func.isRequired,
+        customClass: PropTypes.string.isRequired
     }
 
     onClick = () => {
@@ -20,13 +21,14 @@ class Tab extends Component {
             props: {
                 activeTab,
                 label,
+                customClass
             },
         } = this
 
-        let className = "tab-list-item"
+        let className = customClass ? ("tab-list-item-" + customClass) : "tab-list-item"
 
         if (activeTab === label) {
-            className += " tab-list-active"
+            className += customClass ? (" tab-list-active-" + customClass) : " tab-list-active"
         }
 
         return (

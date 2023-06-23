@@ -36,7 +36,9 @@ export default function Reply(props) {
                 <div className='reply-detail'>{name}</div>
                 <div className='reply-detail'>| Level {level}</div>
             </div>
-            <div className='reply-body'><ReactMarkdown>{reply.body}</ReactMarkdown></div>
+            <div className='reply-body'>
+                {reply.body}
+            </div>
             <div className='reply-details'>
                 <div className='reply-like-container'> { "👍" } { reply.likes }
                     { props.hasAuth && (<button type='button' className='reply-like-button' onClick={userLikedReply ? unlikeReply : likeReply}>

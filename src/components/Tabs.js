@@ -12,6 +12,7 @@ class Tabs extends Component {
 
         this.state = {
             activeTab: this.props.children[0].props.label,
+            customClass: this.props.customClass
         }
     }
 
@@ -27,12 +28,13 @@ class Tabs extends Component {
             },
             state: {
                 activeTab,
+                customClass
             }
         } = this
 
         return (
             <div className="tabs">
-                <ol className="tab-list">
+                <ol className={customClass ? ("tab-list-" + customClass) : "tab-list"}>
                     {children.map( (child) => {
                         const { label } = child.props
 
@@ -41,6 +43,7 @@ class Tabs extends Component {
                                 activeTab={activeTab}
                                 key={label}
                                 label={label}
+                                customClass={customClass}
                                 onClick={onClickTabItem}
                             />
                         )

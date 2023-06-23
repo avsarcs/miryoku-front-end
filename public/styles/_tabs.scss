@@ -1,9 +1,16 @@
+@import "./variables";
+
 .tab-list {
     display: flex;
     padding: 0;
 }
 
-.tab-list-item {
+.tab-list-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-list-item, .tab-list-item-profile {
     border-radius: 5%;
     list-style: none;
     margin: 0.2em 0.3em;
@@ -16,7 +23,20 @@
     padding: 0.4em 1.4em;
 }
 
-.tab-list-active {
-    color: #FFEFD5;
+.tab-list-item-profile {
+    border-radius: 5%;
+    list-style: none;
+    margin: 0.3em 0.3em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.4em 1.4em;
+}
+
+.tab-list-active, .tab-list-active-profile {
+    color: $background-color-2;
     background-color: black;
 }
