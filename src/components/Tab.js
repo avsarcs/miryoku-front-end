@@ -21,6 +21,7 @@ class Tab extends Component {
             props: {
                 activeTab,
                 label,
+                style,
                 customClass
             },
         } = this
@@ -34,6 +35,7 @@ class Tab extends Component {
         return (
             <li
                 className={className}
+                style={style}
                 onClick={onClick}
             >
                 {label}

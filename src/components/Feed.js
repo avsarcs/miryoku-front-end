@@ -99,7 +99,10 @@ export default function Feed(props) {
                     <h2>Help others by giving them feedback.</h2>
                     <div className="toggle-filter-menu"></div>
                 </div>
-                <StatsWidget width="50%" user={props.user} />
+                <div className="feed-create-container">
+                    <i className="fas fa-palette fa-5x feed-palette"></i>
+                    <button className="feed-create-button" type="button">Create New Artwork</button>
+                </div>
             </div>
 
             <div className="feed-body">

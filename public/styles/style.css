@@ -196,8 +196,49 @@
   border-color: rgb(121, 16, 16);
   border-top: 0px;
   border-bottom: 0px;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: radial-gradient(ellipse farthest-corner at 40px 40px, #f1efeb, #f1efeb 50%, #ffffff 50%);
+  background-size: 40px 40px;
 }
 
+.feed-create-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.feed-create-button {
+  margin-left: 1em;
+  border: 2px solid black;
+  background-color: #efefef;
+  border-radius: 15px;
+  font-family: "Oswald";
+  font-size: 2em;
+  padding: 0em 1em;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: auto;
+  transition: letter-spacing 0.2s ease-out 0s;
+}
+
+.feed-create-button:hover {
+  letter-spacing: 0.05em;
+}
+
+@media screen and (max-width: 720px) {
+  .feed-create-container {
+    flex-direction: column;
+  }
+  .feed-create-button {
+    margin-left: 0;
+    margin-top: 6vh;
+  }
+}
 .desc-and-widget-container {
   display: flex;
   justify-content: space-between;
@@ -432,9 +473,9 @@
   align-items: center;
   height: auto;
   min-height: 90vh;
-  background-color: #FFEFD5;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0, radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px, radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0, radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px, radial-gradient(hsl(0, 100%, 20%) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0, radial-gradient(hsl(0, 100%, 20%) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px, radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0, radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px, linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsl(0, 100%, 0%) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0, linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsl(0, 100%, 0%) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
+  background-color: #300;
+  background-size: 100px 100px;
 }
 
 .profile-container {
@@ -444,17 +485,41 @@
   width: 50%;
 }
 
+.profile-customize-button {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  margin-bottom: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-cog {
+  margin-left: 0.5em;
+}
+
+.profile-customize-button:hover .fa-cog {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 .epic-name-ego-bloat {
   margin: 2rem 0 1rem 0;
 }
 
 .epic-user-about {
   font-size: 1.05em;
-  border-style: solid;
-  border-width: 0 0 2px 0;
   border-radius: 2px;
   max-width: 80%;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-bottom: 1em;
 }
 
@@ -475,15 +540,23 @@
   justify-content: center;
 }
 
+.profile-overlay-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2em;
+}
+
 .all-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: auto;
   min-height: 90vh;
-  background-color: #FFEFD5;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: linear-gradient(30deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(150deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(30deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(150deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(60deg, rgba(241, 239, 235, 0.4666666667) 25%, transparent 25.5%, transparent 75%, rgba(241, 239, 235, 0.4666666667) 75%, rgba(241, 239, 235, 0.4666666667)), linear-gradient(60deg, rgba(241, 239, 235, 0.4666666667) 25%, transparent 25.5%, transparent 75%, rgba(241, 239, 235, 0.4666666667) 75%, rgba(241, 239, 235, 0.4666666667));
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 
 .tabs-wrapper {
@@ -491,6 +564,7 @@
 }
 
 .artwork-container {
+  opacity: 1;
   width: 80vw;
   height: auto;
 }
@@ -575,40 +649,105 @@
   padding: 0;
 }
 
-.tab-list-profile {
+.tab-list-item {
+  border-radius: 5%;
+  list-style: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 0.4em 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0 0 2px 0;
+  margin: 0.2em 0.3em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tab-list-active {
+  font-weight: bold;
+  margin: 0.3em 0.3em;
+  border-width: 0 0 4px 0;
+}
+
+.tab-list-dark-bg {
   display: flex;
   justify-content: center;
 }
 
-.tab-list-item, .tab-list-item-profile {
+.tab-list-item-dark-bg {
   border-radius: 5%;
   list-style: none;
-  margin: 0.2em 0.3em;
   border-width: 2px;
   border-style: solid;
   border-color: black;
   cursor: pointer;
   font-size: 1.1em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 0.4em 1.4em;
-}
-
-.tab-list-item-profile {
-  border-radius: 5%;
-  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  font-family: "Abel";
+  background-color: white;
   margin: 0.3em 0.3em;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-family: "Abel";
+}
+
+.tab-list-active-dark-bg {
+  font-weight: bold;
+  margin: 0.3em 0.3em;
+  border-width: 4px;
+}
+
+.tabs-vertical {
+  display: flex;
+  min-width: 50vw;
+}
+
+.tab-content-vertical {
+  border: 2px solid black;
+  border-width: 0 0 0 2px;
+  padding-left: 2em;
+}
+
+.tab-list-vertical {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-wrap: break-word;
+}
+
+.tab-list-item-vertical {
+  border-radius: 5%;
+  list-style: none;
   border-width: 2px;
   border-style: solid;
   border-color: black;
   cursor: pointer;
   font-size: 1.1em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 0.4em 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Abel";
+  border-radius: 0;
+  min-width: 10em;
+  border-width: 0 0 2px 0;
+  color: gray;
 }
 
-.tab-list-active, .tab-list-active-profile {
-  color: #FFEFD5;
-  background-color: black;
+.tab-list-active-vertical {
+  font-weight: bold;
+  padding: 0 -2px 0 -2px;
+  border-width: 0 0 4px 0;
+  color: black;
+  background-color: rgb(234, 232, 230);
 }
 
 .comment-submit-container, .reply-submit-container {
@@ -838,11 +977,94 @@
   font-weight: bold;
 }
 
+.overlay-background {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  transition: transform;
+}
+
+.overlay-container {
+  background-color: white;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2em;
+  border-radius: 15px;
+  animation: slideOverlay 0.3s 1 ease-out;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 10;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@keyframes slideOverlay {
+  from {
+    transform: translateY(20vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.overlay-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+
+.overlay-close {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   background-color: Mintcream;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.basic-button {
+  all: unset;
+  cursor: pointer;
+  background-color: Mintcream;
+  color: black;
+  font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+  padding: 0.2em 1em;
+  padding-bottom: 0.3em;
+  position: relative;
+}
+
+.basic-button-text:after {
+  background: none repeat scroll 0 0 transparent;
+  content: "";
+  display: block;
+  margin-top: 0.05em;
+  height: 2px;
+  position: absolute;
+  left: 10%;
+  background: #000000;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.basic-button:hover .basic-button-text:after {
+  width: 80%;
 }
 
 @media screen and (max-width: 900px) {

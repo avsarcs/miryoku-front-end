@@ -10,6 +10,8 @@
     flex-direction: column;
     align-items: center;
     height: auto;
+
+
     background-color: #FFEFD5;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -26,6 +28,50 @@
     border-top: 0px;
     border-bottom: 0px;
 
+    background-color: #ffffff;
+opacity: 1;
+background-image: radial-gradient( ellipse farthest-corner at 40px 40px , #f1efeb, #f1efeb 50%, #ffffff 50%);
+background-size: 40px 40px;
+
+}
+
+.feed-create-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.feed-create-button {
+    margin-left: 1em;
+    border: 2px solid black;
+    background-color: #efefef;
+    border-radius: 15px;
+    font-family: "Oswald";
+    font-size: 2em;
+    padding: 0em 1em;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: auto;
+    transition: letter-spacing 0.2s ease-out 0s;
+}
+
+.feed-create-button:hover {
+    letter-spacing: 0.05em;
+}
+
+@media screen and (max-width: 720px) {
+    .feed-create-container {
+        flex-direction: column;
+    }
+
+    .feed-create-button {
+        margin-left: 0;
+        margin-top: 6vh;
+    }
 }
 
 .desc-and-widget-container {

@@ -6,6 +6,7 @@
         "password": "xQrejsgeWfkdlwgm4728gAndmcvwRtbw835792",
         "about": "George Lacan enthusiast. Fellow surrealist. Been arting since the dawn of my life.",
         "skills": ["Musician", "Writer"],
+        "nameChanged": "false",
         "level": "5",
         "xp": "66",
         "points": "200",
@@ -17,13 +18,22 @@
         "title": "Novice",
         "profileStyle": {
             "nameStyle": {
+                "color": "white",
+                "textShadow": "-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black",
                 "fontSize": "5em",
                 "fontFamily": "Lobster, Haettenschweiler, 'Arial Narrow Bold', sans-serif"
             },
-            "descriptionStyle": {
-                
-            }
+            "aboutStyle": {
+                "padding": "1em",
+                "backgroundColor": "#ffffff",
+                "background": " linear-gradient(135deg, #e3e3e355 25%, transparent 25%) -22px 0/ 44px 44px, linear-gradient(225deg, #e3e3e3 25%, transparent 25%) -22px 0/ 44px 44px, linear-gradient(315deg, #e3e3e355 25%, transparent 25%) 0px 0/ 44px 44px, linear-gradient(45deg, #e3e3e3 25%, #ffffff 25%) 0px 0/ 44px 44px",
+                "border": "2px solid black",
+                "fontFamily": "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+            },
+            "tabClass": "dark-bg",
+            "bgPattern": "red-office"
         },
+        "featuredArtworks": [],
         "featuredFeedback": ["332"],
         "stats": {
             "fbGiven": "5",

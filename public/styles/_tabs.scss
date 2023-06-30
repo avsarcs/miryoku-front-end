@@ -1,42 +1,109 @@
 @import "./variables";
 
+@mixin allTabListItems {
+    border-radius: 5%;
+    list-style: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0.4em 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tab-list {
     display: flex;
     padding: 0;
 }
 
-.tab-list-profile {
+.tab-list-item {
+    @include allTabListItems();
+    
+    border-width: 0 0 2px 0;
+    margin: 0.2em 0.3em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tab-list-active {
+    font-weight: bold;
+    margin: 0.3em 0.3em;
+    border-width: 0 0 4px 0;
+}
+
+// START OF DARK-BG
+
+.tab-list-dark-bg {
     display: flex;
     justify-content: center;
 }
 
-.tab-list-item, .tab-list-item-profile {
-    border-radius: 5%;
-    list-style: none;
-    margin: 0.2em 0.3em;
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 0.4em 1.4em;
-}
+.tab-list-item-dark-bg {
+    @include allTabListItems();
 
-.tab-list-item-profile {
-    border-radius: 5%;
-    list-style: none;
+    display: flex;
+    align-items: center;
+
+    font-family: "Abel";
+    background-color: white;
     margin: 0.3em 0.3em;
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
     cursor: pointer;
     font-size: 1.1em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 0.4em 1.4em;
+    font-family: "Abel";
 }
 
-.tab-list-active, .tab-list-active-profile {
-    color: $background-color-2;
-    background-color: black;
+.tab-list-active-dark-bg {
+    font-weight: bold;
+    margin: 0.3em 0.3em;
+    border-width: 4px;
 }
+
+// END OF DARK-BG
+
+// START OF VERTICAL
+
+.tabs-vertical {
+    display: flex;
+    min-width: 50vw;
+}
+
+.tab-content-vertical {
+    border: 2px solid black;
+    border-width: 0 0 0 2px;
+    padding-left: 2em;
+}
+
+.tab-list-vertical {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    overflow-wrap: break-word;
+}
+
+.tab-list-item-vertical {
+    @include allTabListItems();
+
+    font-family: "Abel";
+    border-radius: 0;
+
+    min-width: 10em;
+
+    border-width: 0 0 2px 0;
+    color: gray;
+}
+
+.tab-list-active-vertical {
+
+    font-weight: bold;
+    padding: 0 -2px 0 -2px;
+    border-width: 0 0 4px 0;
+    color: black;
+    background-color: rgb(234, 232, 230);
+
+}
+
+// END OF VERTICAL
+

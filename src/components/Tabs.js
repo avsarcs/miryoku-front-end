@@ -10,8 +10,17 @@ class Tabs extends Component {
     constructor(props) {
         super(props)
 
+        let activeIndex
+
+        for (let i = 0; i < this.props.children.length; i++) {
+
+            if (this.props.children[i].props.isVisible === undefined || this.props.children[i].props.isVisible === true)
+                activeIndex = i
+
+        }
+
         this.state = {
-            activeTab: this.props.children[0].props.label,
+            activeTab: this.props.children[activeIndex].props.label,
             customClass: this.props.customClass
         }
     }
@@ -33,14 +42,15 @@ class Tabs extends Component {
         } = this
 
         return (
-            <div className="tabs">
+            <div className={customClass ? ("tabs-" + customClass) : "tabs"}>
                 <ol className={customClass ? ("tab-list-" + customClass) : "tab-list"}>
                     {children.map( (child) => {
-                        const { label } = child.props
-
+                        const { label, isVisible } = child.props
+                        
                         return (
                             <Tab
                                 activeTab={activeTab}
+                                style={isVisible === undefined ? {} : (isVisible === true ? {} : {"display": "none"})}
                                 key={label}
                                 label={label}
                                 customClass={customClass}
@@ -50,7 +60,7 @@ class Tabs extends Component {
 
                     })}
                 </ol>
-                <div className="tab-content">
+                <div className={customClass ? ("tab-content-" + customClass) : "tab-content"}>
                     {children.map((child) => {
                         if (child.props.label !== activeTab) return undefined
                         return child.props.children

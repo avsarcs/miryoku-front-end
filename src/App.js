@@ -13,12 +13,12 @@ const hasAuth = true;
 
 export default function App() {
     return (<>
-    <Navbar hasAuth={hasAuth} />
+    <Navbar user={User[0]} hasAuth={hasAuth} />
 
     <Routes>
         <Route path="/" element={<Home hasAuth={hasAuth} user={User[0]} artworks={Artworks} />}/>
         <Route path="artwork/:id" element={<Artwork hasAuth={hasAuth} user={User[0]} />}/>
-        <Route path="profile" element={<Profile hasAuth={hasAuth} user={User[0]}/>} />
+        <Route path="profile/:id" element={<Profile hasAuth={hasAuth} user={User[0]}/>} />
     </Routes>
         </>
     )
