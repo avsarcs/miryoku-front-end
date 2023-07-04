@@ -16,7 +16,7 @@ export function Overlay({ isOpen, onClose, children, customClass }) {
                 className={customClass ? ("overlay-close-" + customClass) : "overlay-close"}
                 type="button"
                 onClick={onClose}
-              ><i className="fa fa-window-close" ariaHidden="true"></i>
+              ><i className="fa fa-window-close" aria-hidden="true"></i>
               </button>
             </div>
             {children}

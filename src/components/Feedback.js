@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import Reply from './Reply';
 import Users from '../dummyData/dummy-user.json'
-import Replies  from '../dummyData/dummy-replies.json'   
+import Replies  from '../dummyData/dummy-replies.json'
+import Artworks from '../dummyData/dummy-artworks.json'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { Link } from "react-router-dom"
 import StarRating from './StarRating';
@@ -12,6 +13,8 @@ export default function Feedback(props) {
     const feedbackID = parseInt(feedback._id);
 
     const currentUserRating = parseInt(props.user.feedbackRatings[feedback._id])
+
+    const artwork = Artworks.filter( (artwork) => parseInt(feedback.artworkID) === parseInt(artwork._id) )[0]
 
     // Represent a reply as an object (going to be stored in the database)
     const [ reply, setReply ] = useState({
@@ -115,14 +118,17 @@ export default function Feedback(props) {
                 <div className='feedback-detail'> | Level {level} </div>
             </div>
             <div className='feedback-body'>
-                { 
-                props.isLinked ?
-                    (<Link style={{"all": "unset", "cursor": "pointer"}} target="_blank" to={"/artwork/" + feedback.artworkID}>
-                        <ReactMarkdown>{feedback.body}</ReactMarkdown>
+                {
+                    props.isOutside ?
+                        (<Link style={{"all": "unset", "cursor": "pointer"}} target="_blank" to={"/artwork/" + feedback.artworkID}>
+                            <div className='faded-text'>Written for {artwork.title}</div>
                         </Link>)
-                    :
-                    (<ReactMarkdown>{feedback.body}</ReactMarkdown>)
+                        :
+                        (<></>)
                 }
+
+                    <ReactMarkdown>{feedback.body}</ReactMarkdown>
+                    
             </div>
             {/* This is where the user will rate the usefulness of the feedback */}
             {

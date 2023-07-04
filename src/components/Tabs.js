@@ -14,8 +14,10 @@ class Tabs extends Component {
 
         for (let i = 0; i < this.props.children.length; i++) {
 
-            if (this.props.children[i].props.isVisible === undefined || this.props.children[i].props.isVisible === true)
+            if (this.props.children[i].props.isVisible === undefined || this.props.children[i].props.isVisible === true) {
                 activeIndex = i
+                break
+            }
 
         }
 

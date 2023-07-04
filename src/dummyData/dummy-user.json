@@ -1,12 +1,12 @@
 [
     {
         "_id": "75",
-        "name": "Mehmet Emin Avşar",
+        "name": "Badik Pacino",
         "email": "avsarmehmetemin@gmail.com",
         "password": "xQrejsgeWfkdlwgm4728gAndmcvwRtbw835792",
         "about": "George Lacan enthusiast. Fellow surrealist. Been arting since the dawn of my life.",
         "skills": ["Musician", "Writer"],
-        "nameChanged": "false",
+        "nameChanged": "",
         "level": "5",
         "xp": "66",
         "points": "200",
@@ -18,22 +18,24 @@
         "title": "Novice",
         "profileStyle": {
             "nameStyle": {
-                "color": "white",
+                "color": "#FFFFFF",
                 "textShadow": "-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black",
                 "fontSize": "5em",
+                "letterSpacing": "0.08em",
                 "fontFamily": "Lobster, Haettenschweiler, 'Arial Narrow Bold', sans-serif"
             },
             "aboutStyle": {
                 "padding": "1em",
+                "fontSize": "1.25em",
+                "border": "2px solid black",
                 "backgroundColor": "#ffffff",
                 "background": " linear-gradient(135deg, #e3e3e355 25%, transparent 25%) -22px 0/ 44px 44px, linear-gradient(225deg, #e3e3e3 25%, transparent 25%) -22px 0/ 44px 44px, linear-gradient(315deg, #e3e3e355 25%, transparent 25%) 0px 0/ 44px 44px, linear-gradient(45deg, #e3e3e3 25%, #ffffff 25%) 0px 0/ 44px 44px",
-                "border": "2px solid black",
-                "fontFamily": "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+                "fontFamily": "Gill Sans, Gill Sans MT, Calibri, 'Trebuchet MS', sans-serif"
             },
             "tabClass": "dark-bg",
-            "bgPattern": "red-office"
+            "backgroundImage": "url('../img/profile-bg-5.webp')"
         },
-        "featuredArtworks": [],
+        "featuredArtworks": ["86"],
         "featuredFeedback": ["332"],
         "stats": {
             "fbGiven": "5",

@@ -9,6 +9,52 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 @import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+@import url("https://fonts.googleapis.com/css?family=Cabin");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans");
+@import url("https://fonts.googleapis.com/css?family=Cairo");
+@import url("https://fonts.googleapis.com/css?family=Bitter");
+@import url("https://fonts.googleapis.com/css?family=Muli");
+@import url("https://fonts.googleapis.com/css?family=Exo");
+@import url("https://fonts.googleapis.com/css?family=Rubik");
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
+@import url("https://fonts.googleapis.com/css?family=Abel");
+@import url("https://fonts.googleapis.com/css?family=Quattrocento+Sans");
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
+@import url("https://fonts.googleapis.com/css?family=Archivo");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Slab");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+@import url("https://fonts.googleapis.com/css?family=Shadows+Into+Light");
+@import url("https://fonts.googleapis.com/css?family=Cabin+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Karla");
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono");
+@import url("https://fonts.googleapis.com/css?family=Signika");
+@import url("https://fonts.googleapis.com/css?family=Asap");
+@import url("https://fonts.googleapis.com/css?family=Dosis");
+@import url("https://fonts.googleapis.com/css?family=Anton");
+@import url("https://fonts.googleapis.com/css?family=Catamaran");
+@import url("https://fonts.googleapis.com/css?family=Cormorant");
 
 @import "./navbar";
 @import "./home";
@@ -26,6 +72,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+// BUTTONS
 
 .basic-button {
     all: unset;
@@ -61,6 +109,66 @@ body {
     }
 
   }
+
+  .secondary-button {
+    background: black;
+    color: $background-color-2;
+    border-style: solid;
+    border-color: black;
+    padding: 0.2em 0.3em;
+    border-radius: 3%;
+}
+
+// END OF BUTTONS
+
+// DIV TEMPLATES
+
+.sleek-text {
+    font-family: "Barlow", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.faded-text {
+    color: rgb(95, 95, 95);
+}
+
+.spaced-well {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.margin-left {
+    margin-left: 1em;
+}
+
+.margin-right {
+    margin-right: 1em;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.margin-top {
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 1200px) {
+    .spaced-well {
+        justify-content: flex-start;
+    }
+}
+
+// END OF DIV TEMPLATES
 
 // MEDIA QUERY FOR MOBILE COMPATIBILITY
 

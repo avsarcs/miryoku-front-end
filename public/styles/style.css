@@ -7,6 +7,52 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 @import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+@import url("https://fonts.googleapis.com/css?family=Cabin");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans");
+@import url("https://fonts.googleapis.com/css?family=Cairo");
+@import url("https://fonts.googleapis.com/css?family=Bitter");
+@import url("https://fonts.googleapis.com/css?family=Muli");
+@import url("https://fonts.googleapis.com/css?family=Exo");
+@import url("https://fonts.googleapis.com/css?family=Rubik");
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
+@import url("https://fonts.googleapis.com/css?family=Abel");
+@import url("https://fonts.googleapis.com/css?family=Quattrocento+Sans");
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
+@import url("https://fonts.googleapis.com/css?family=Archivo");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Slab");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+@import url("https://fonts.googleapis.com/css?family=Shadows+Into+Light");
+@import url("https://fonts.googleapis.com/css?family=Cabin+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Karla");
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono");
+@import url("https://fonts.googleapis.com/css?family=Signika");
+@import url("https://fonts.googleapis.com/css?family=Asap");
+@import url("https://fonts.googleapis.com/css?family=Dosis");
+@import url("https://fonts.googleapis.com/css?family=Anton");
+@import url("https://fonts.googleapis.com/css?family=Catamaran");
+@import url("https://fonts.googleapis.com/css?family=Cormorant");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Abel");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
@@ -473,9 +519,6 @@
   align-items: center;
   height: auto;
   min-height: 90vh;
-  background: radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0, radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px, radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0, radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px, radial-gradient(hsl(0, 100%, 20%) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0, radial-gradient(hsl(0, 100%, 20%) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px, radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0, radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px, linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsl(0, 100%, 0%) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0, linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsl(0, 100%, 0%) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
-  background-color: #300;
-  background-size: 100px 100px;
 }
 
 .profile-container {
@@ -514,6 +557,7 @@
 }
 .epic-name-ego-bloat {
   margin: 2rem 0 1rem 0;
+  text-align: center;
 }
 
 .epic-user-about {
@@ -537,6 +581,7 @@
 
 .feedback-feature {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -544,6 +589,199 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 2em;
+}
+
+.overlay-personal-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  overflow: scroll;
+}
+
+.overlay-customize-name-wrapper {
+  display: flex;
+}
+
+.overlay-profile-name {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.overlay-profile-general {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.overlay-customize-wrapper {
+  display: flex;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin-top: 1em;
+  padding-right: 3em;
+}
+
+.changeable-text {
+  resize: none;
+  border-width: 0 0 2px 0;
+  font-size: 0.9em;
+  background: none;
+  border-style: solid;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: border-color 1s ease 0s;
+}
+
+.overlay-profile-styles {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  overflow: scroll;
+}
+
+.about-customize {
+  resize: vertical;
+}
+
+.email-customize {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.changeable-text:focus {
+  outline: none;
+  border-color: black;
+}
+
+.title-customize-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110%;
+  padding-bottom: 15px;
+}
+
+.backgrounds-display {
+  overflow-y: scroll;
+  overflow-x: normal;
+  overflow-wrap: normal;
+  margin-top: 1em;
+  max-width: 350px;
+  max-height: 110px;
+}
+
+.large-backgrounds-display {
+  overflow-y: scroll;
+  overflow-x: normal;
+  overflow-wrap: normal;
+  margin-top: 1em;
+  max-width: 650px;
+  max-height: 220px;
+}
+
+.background-box {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  min-width: 50px;
+  max-width: 50px;
+  width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  height: 50px;
+}
+
+.large-background-box {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  min-width: 100px;
+  max-width: 100px;
+  width: 100px;
+  min-height: 100px;
+  max-height: 100px;
+  height: 100px;
+}
+
+.about-customize-preview-container {
+  margin-top: 1em;
+}
+
+.artwork-selection {
+  padding-bottom: 1em;
+}
+
+.name-display-simple {
+  display: block;
+  cursor: pointer;
+  padding: 1em 0;
+  margin-top: 1em;
+  border: 2px solid black;
+  border-right: 0;
+  border-left: 0;
+}
+
+.profile-bg-1 {
+  background-image: url("../img/profile-bg-1.webp");
+}
+
+.profile-bg-2 {
+  background-image: url("../img/profile-bg-2.webp");
+}
+
+.profile-bg-3 {
+  background-image: url("../img/profile-bg-3.png");
+}
+
+.profile-bg-4 {
+  background-image: url("../img/profile-bg-4.webp");
+}
+
+.profile-bg-5 {
+  background-image: url("../img/profile-bg-5.webp");
+}
+
+.about-style-1 {
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-image: linear-gradient(135deg, #ececec 25%, transparent 25%), linear-gradient(225deg, #ececec 25%, transparent 25%), linear-gradient(45deg, #ececec 25%, transparent 25%), linear-gradient(315deg, #ececec 25%, #ffffff 25%);
+  background-position: 11px 0, 11px 0, 0 0, 0 0;
+  background-size: 22px 22px;
+  background-repeat: repeat;
+}
+
+.about-style-2 {
+  background-color: #ffffff;
+  background-image: radial-gradient(ellipse farthest-corner at 23px 23px, #ececec, #ececec 50%, #ffffff 50%);
+  background-size: 23px 23px;
+}
+
+.about-style-3 {
+  background-color: #ffffff;
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 19px), repeating-linear-gradient(rgba(236, 236, 236, 0.3333333333), #ececec);
+}
+
+.about-style-4 {
+  background-color: "#ffffff";
+  background: linear-gradient(135deg, rgba(227, 227, 227, 0.3333333333) 25%, transparent 25%) -22px 0/44px 44px, linear-gradient(225deg, #e3e3e3 25%, transparent 25%) -22px 0/44px 44px, linear-gradient(315deg, rgba(227, 227, 227, 0.3333333333) 25%, transparent 25%) 0px 0/44px 44px, linear-gradient(45deg, #e3e3e3 25%, #ffffff 25%) 0px 0/44px 44px;
+}
+
+.about-style-5 {
+  background-color: #ffffff;
+  background-image: linear-gradient(45deg, #ececec 50%, #ffffff 50%);
+  background-size: 19px 19px;
 }
 
 .all-container {
@@ -650,20 +888,19 @@
 }
 
 .tab-list-item {
-  border-radius: 5%;
   list-style: none;
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
   cursor: pointer;
   font-size: 1.1em;
   padding: 0.4em 1.4em;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5%;
+  border-style: solid;
+  border-color: black;
   border-width: 0 0 2px 0;
   margin: 0.2em 0.3em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Abel", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .tab-list-active {
@@ -678,11 +915,7 @@
 }
 
 .tab-list-item-dark-bg {
-  border-radius: 5%;
   list-style: none;
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
   cursor: pointer;
   font-size: 1.1em;
   padding: 0.4em 1.4em;
@@ -691,6 +924,9 @@
   align-items: center;
   display: flex;
   align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 5%;
   font-family: "Abel";
   background-color: white;
   margin: 0.3em 0.3em;
@@ -713,7 +949,8 @@
 .tab-content-vertical {
   border: 2px solid black;
   border-width: 0 0 0 2px;
-  padding-left: 2em;
+  padding: 0 2em 1em 2em;
+  font-family: "Barlow", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .tab-list-vertical {
@@ -724,11 +961,7 @@
 }
 
 .tab-list-item-vertical {
-  border-radius: 5%;
   list-style: none;
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
   cursor: pointer;
   font-size: 1.1em;
   padding: 0.4em 1.4em;
@@ -750,6 +983,58 @@
   background-color: rgb(234, 232, 230);
 }
 
+@media screen and (max-width: 1200px) {
+  .tabs-vertical {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+  }
+  .tab-list-vertical {
+    all: unset;
+    display: flex;
+    overflow: scroll;
+    overflow-wrap: normal;
+    padding: 0;
+    flex-direction: row-reverse;
+  }
+  .tab-list-item-vertical {
+    all: unset;
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0.4em 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-wrap: normal;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    margin: 0.2em 0.3em;
+    font-family: "Abel", Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .tab-list-active-vertical {
+    all: unset;
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0.4em 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-wrap: normal;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    margin: 0.2em 0.3em;
+    font-family: "Abel", Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: 0.3em 0.3em;
+    background-color: rgb(234, 232, 230);
+  }
+  .tab-content-vertical {
+    border-width: 2px 0 0 0;
+    padding: 1em 0.5em 1em 0.5em;
+  }
+}
 .comment-submit-container, .reply-submit-container {
   display: flex;
   flex-direction: column;
@@ -1002,6 +1287,9 @@
   left: 0;
   margin: auto;
   z-index: 10;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: scroll;
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
@@ -1067,6 +1355,59 @@ body {
   width: 80%;
 }
 
+.secondary-button {
+  background: black;
+  color: #FFEFD5;
+  border-style: solid;
+  border-color: black;
+  padding: 0.2em 0.3em;
+  border-radius: 3%;
+}
+
+.sleek-text {
+  font-family: "Barlow", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.faded-text {
+  color: rgb(95, 95, 95);
+}
+
+.spaced-well {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-left {
+  margin-left: 1em;
+}
+
+.margin-right {
+  margin-right: 1em;
+}
+
+.margin-bottom {
+  margin-bottom: 1em;
+}
+
+.margin-top {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 1200px) {
+  .spaced-well {
+    justify-content: flex-start;
+  }
+}
 @media screen and (max-width: 900px) {
   .navbar-title {
     color: transparent;
