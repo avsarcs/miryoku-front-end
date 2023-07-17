@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import Users from "../dummyData/dummy-user.json"
 import ReactMarkdown from 'react-markdown'
 import Tabs from "../components/Tabs";
+import YouTube from "react-youtube";
 
 import Artworks from "../dummyData/dummy-artworks.json"
 
@@ -11,9 +12,11 @@ import Comment from "../components/Comment";
 import Feedbacks from "../dummyData/dummy-feedbacks.json"
 import Feedback from "../components/Feedback"
 
+import FlagOverlay from "../components/FlagOverlay";
+
 import StarRating from "../components/StarRating";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 
 export default function Artwork(props) {
@@ -164,8 +167,64 @@ export default function Artwork(props) {
 
     const [userRating, setUserRating] = useState(parseInt(props.user.awRatings[artwork._id]))
 
+    const [youtubePlayerOpts, setYoutubePlayerOpts] = useState({
+        height: '390',
+        width: '640',
+        playerVars: {
+          // https://developers.google.com/youtube/player_parameters
+          autoplay: 1,
+        },
+      })
+
+      useEffect(() => {
+        const handleResize = () => {
+          if (window.innerWidth > 640) {
+            setYoutubePlayerOpts((prevYoutubePlayerOpts) => {
+                return {
+                    ...prevYoutubePlayerOpts,
+                    height: '390',
+                    width: '640'
+                }
+            })
+          }
+
+          if (window.innerWidth < 640 && youtubePlayerOpts.width !== '320') {
+            setYoutubePlayerOpts((prevYoutubePlayerOpts) => {
+                return {
+                    ...prevYoutubePlayerOpts,
+                    height: '195',
+                    width: '320'
+                }
+            })
+          }
+        }
+    
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener on component unmount
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+
+    // Part below is related to the flag overlay functionality
+    const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
+
+    const toggleFlagOverlay = () => {
+        setIsFlagOverlayOpen((prevState) => !prevState)
+    }
+
     return (
         <div className="all-container">
+
+            <FlagOverlay
+                isOpen={isFlagOverlayOpen}
+                onClose={toggleFlagOverlay}
+                forWhat={"artwork"}
+                _id={artwork._id}
+                suspectID={user._id}
+                submitterID={props.user._id}/>
+
             <div className="artwork-container">
                 <div className="artwork-title" style={titleStyle}>{artwork.title}</div>
                 <div className="artwork-info" style={titleStyle}>by {user.name} &emsp; &emsp; {artwork.type}📖
@@ -176,22 +235,42 @@ export default function Artwork(props) {
                             <label key={tag} className="cool-label" style={{fontSize: "0.9em"}} >{tag}</label>
                         ) )
                     }
+                    <button
+                        style={{"all": "unset", "cursor": "pointer"}}
+                        onClick={toggleFlagOverlay}>
+                            <i class="fas fa-flag"/>
+                    </button>
                 </div>
                 <span className="long-description">
                     {artwork.longDescription}
                 </span>
+                    
                 <div className="artwork-body" style={bodyStyle}>
 
-                    {bodyLines.map((line, index) => {
-                        if (line === "") {
-                            return (<br key={index}/>)
-                        }
-                        else { return (
-                        <div key={index}>
-                            <ReactMarkdown>{line}</ReactMarkdown>
-                        </div>
-                        )}
-                    }) }
+                    {
+                    
+                        (artwork.type === "Fiction" || artwork.type === "Poem" || artwork.type === "Other") &&
+
+                        bodyLines.map((line, index) => {
+                            if (line === "") {
+                                return (<br key={index}/>)
+                            }
+                            else { return (
+                            <div key={index}>
+                                <ReactMarkdown>{line}</ReactMarkdown>
+                            </div>
+                            )}
+                        })
+                    
+                    }
+
+                    {
+                        (artwork.type === "Cinema" || artwork.type === "Music") &&
+                        <YouTube
+                            style={{"marginTop": "1em"}}
+                            videoId={artwork.body}
+                            opts={youtubePlayerOpts}/>
+                    }
 
                 </div>
                { props.hasAuth &&

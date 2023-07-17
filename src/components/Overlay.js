@@ -1,9 +1,6 @@
 import { Fragment, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 export function Overlay({ isOpen, onClose, children, customClass }) {
-
-  const [overlayStyle, setOverlayStyle] = useState({})
 
   return (
     <Fragment>

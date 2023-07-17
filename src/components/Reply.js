@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Users from "../dummyData/dummy-user.json"
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'; 
+import FlagOverlay from './FlagOverlay';
 
 export default function Reply(props) {
 
@@ -30,8 +31,23 @@ export default function Reply(props) {
     // Fetch the necessary details (that will be shown on the reply) of the User who wrote the reply.
     const { name, level } = Users.filter( user => parseInt(user._id) === parseInt( reply.ownerID ) )[0]
 
+    // Part below is related to the flag overlay functionality
+    const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
+
+    const toggleFlagOverlay = () => {
+        setIsFlagOverlayOpen((prevState) => !prevState)
+    }
+
     return (
         <div className='reply-container'>
+            <FlagOverlay
+                isOpen={isFlagOverlayOpen}
+                onClose={toggleFlagOverlay}
+                forWhat={"reply"}
+                _id={reply._id}
+                suspectID={reply.ownerID}
+                submitterID={user._id}/>
+
             <div className='reply-details'>
                 <div className='reply-detail'>{name}</div>
                 <div className='reply-detail'>| Level {level}</div>
@@ -41,8 +57,13 @@ export default function Reply(props) {
             </div>
             <div className='reply-details'>
                 <div className='reply-like-container'> { "👍" } { reply.likes }
-                    { props.hasAuth && (<button type='button' className='reply-like-button' onClick={userLikedReply ? unlikeReply : likeReply}>
+                    { props.hasAuth && (<button type='button' className='reply-like-button margin-right' onClick={userLikedReply ? unlikeReply : likeReply}>
                     {userLikedReply ? "Unlike" : "Like"}</button>)}
+                    <button
+                        style={{"all": "unset", "cursor": "pointer"}}
+                        onClick={toggleFlagOverlay}>
+                            <i class="fas fa-flag"/>
+                    </button>
                     </div>
             </div>
         </div>

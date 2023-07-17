@@ -6,6 +6,7 @@ import Artworks from '../dummyData/dummy-artworks.json'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { Link } from "react-router-dom"
 import StarRating from './StarRating';
+import FlagOverlay from './FlagOverlay';
 
 export default function Feedback(props) {
     const { feedback } = props;
@@ -111,11 +112,32 @@ export default function Feedback(props) {
     // Fetch the necessary details (that will be shown on the comment box) of the User who wrote the comment.
     const { name, level } = Users.filter( user => parseInt(user._id) === parseInt( feedback.ownerID ) )[0]
 
+    // Part below is related to the flag overlay functionality
+    const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
+
+    const toggleFlagOverlay = () => {
+        setIsFlagOverlayOpen((prevState) => !prevState)
+    }
+
     return (
         <div className='feedback-box'>
+
+            <FlagOverlay
+                isOpen={isFlagOverlayOpen}
+                onClose={toggleFlagOverlay}
+                forWhat={"feedback"}
+                _id={feedbackID}
+                suspectID={feedback.ownerID}
+                submitterID={props.user._id}/>
+
             <div className='feedback-details'>
                 <div className='feedback-detail'> {name} </div>
                 <div className='feedback-detail'> | Level {level} </div>
+                <button
+                        style={{"all": "unset", "cursor": "pointer"}}
+                        onClick={toggleFlagOverlay}>
+                            <i class="fas fa-flag"/>
+                    </button>
             </div>
             <div className='feedback-body'>
                 {

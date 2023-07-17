@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import Reply from './Reply';
 import Users from '../dummyData/dummy-user.json'
 import Replies  from '../dummyData/dummy-replies.json'
+import FlagOverlay from './FlagOverlay';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';  
 
 export default function Comment(props) {
@@ -125,8 +126,23 @@ export default function Comment(props) {
     // Fetch the necessary details (that will be shown on the comment box) of the User who wrote the comment.
     const { name, level } = Users.filter( user => parseInt(user._id) === parseInt( comment.commenterID ) )[0]
 
+    // Part below is related to the flag overlay functionality
+    const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
+
+    const toggleFlagOverlay = () => {
+        setIsFlagOverlayOpen((prevState) => !prevState)
+    }
+
     return (
         <div className='comment-box'>
+            <FlagOverlay
+                isOpen={isFlagOverlayOpen}
+                onClose={toggleFlagOverlay}
+                forWhat={"comment"}
+                _id={comment._id}
+                suspectID={comment.commenterID}
+                submitterID={props.user._id}/>
+
             <div className='commenter-details'>
                 <div className='commenter-detail'> {name} </div>
                 <div className='commenter-detail'> | Level {level} </div>
@@ -144,6 +160,11 @@ export default function Comment(props) {
                 (<button type='button' className='like-button' onClick={userLikedComment ? unlikeComment : likeComment}>
                     {userLikedComment ? "Unlike" : "Like"}</button>)
                     }
+                    <button
+                        style={{"all": "unset", "cursor": "pointer"}}
+                        onClick={toggleFlagOverlay}>
+                            <i class="fas fa-flag"/>
+                    </button>
             </div>
             {
                 props.hasAuth && (

@@ -169,7 +169,7 @@ export default function Create(props) {
     const [tagLimitWarning, setTagLimitWarning] = useState(false)
     const [tagsJSX, setTagsJSX] = useState([])
 
-    const TAG_LIMIT = 15
+    const TAG_LIMIT = 5
 
     // Handles tag input change
     function handleTagChange(e) {
@@ -371,7 +371,8 @@ export default function Create(props) {
                     <div className="tag-filter filter-sub">
                         <input className="tag-text-input" onChange={handleTagChange} value={tag} name="tags" type="text" maxLength="35"/>
                         <button type="button" onClick={handleTagClick} className="add-tag-button">Add tag</button>
-                        {tagsJSX} 
+                        {tagsJSX}
+                        {tagLimitWarning ? (<div className="sleek-text faded-text">You can add at most 5 tags.</div>) : (<></>)} 
                     </div>
 
                 <h3 className="sleek-text" style={{"marginTop": "2em"}}>Pick the Artwork type</h3>

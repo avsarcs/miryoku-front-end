@@ -90,6 +90,47 @@ body {
     position: relative;
 }
 
+.basic-button-text:after {
+    background: none repeat scroll 0 0 transparent;
+    content: "";
+    display: block;
+    margin-top: 0.05em;
+    height: 2px;
+    position: absolute;
+    left: 10%;
+    background: #000000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.basic-button:hover {
+
+    .basic-button-text:after {
+        width: 80%;
+    }
+
+}
+
+.everywhere-button {
+    all: unset;
+    cursor: pointer;
+    background-color: $background-color;
+
+    color: black;
+    font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+
+    padding: 0.2em 1em;
+    padding-bottom: 0.3em;
+
+    position: relative;
+}
+
+.everywhere-button:hover {
+
+    background-color: rgb(219, 217, 217);
+
+}
+
 .regular-button {
     all: unset;
     cursor: pointer;
@@ -110,28 +151,7 @@ body {
     background-color: black;
 }
 
-.basic-button-text:after {
-    background: none repeat scroll 0 0 transparent;
-    content: "";
-    display: block;
-    margin-top: 0.05em;
-    height: 2px;
-    position: absolute;
-    left: 10%;
-    background: #000000;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-  }
-
-  .basic-button:hover {
-
-    .basic-button-text:after {
-        width: 80%;
-    }
-
-  }
-
-  .secondary-button {
+.secondary-button {
     background: black;
     color: $background-color-2;
     border-style: solid;

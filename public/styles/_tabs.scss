@@ -109,12 +109,12 @@
 
 // START OF VERTICAL
 
-.tabs-vertical {
+@mixin tabsVertical {
     display: flex;
     min-width: 50vw;
 }
 
-.tab-content-vertical {
+@mixin tabContentVertical {
     border: 2px solid black;
     border-width: 0 0 0 2px;
     padding: 0 2em 1em 2em;
@@ -122,7 +122,7 @@
     font-family: "Barlow", Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.tab-list-vertical {
+@mixin tabListVertical {
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -130,7 +130,7 @@
     overflow-wrap: break-word;
 }
 
-.tab-list-item-vertical {
+@mixin tabListItemVertical {
     @include allTabListItems();
 
     font-family: "Abel";
@@ -142,7 +142,7 @@
     color: gray;
 }
 
-.tab-list-active-vertical {
+@mixin tabListActiveVertical {
 
     font-weight: bold;
     padding: 0 -2px 0 -2px;
@@ -150,6 +150,46 @@
     color: black;
     background-color: rgb(234, 232, 230);
 
+}
+
+.tabs-vertical {
+     @include tabsVertical()
+}
+
+.tab-content-vertical {
+    @include tabContentVertical()
+}
+
+.tab-list-vertical {
+    @include tabListVertical()
+}
+
+.tab-list-item-vertical {
+    @include tabListItemVertical()
+}
+
+.tab-list-active-vertical {
+    @include tabListActiveVertical()
+}
+
+.tabs-vertical {
+    @include tabsVertical()
+}
+
+.tab-content-verticalRadioBox {
+   padding: 0;
+}
+
+.tab-list-verticalRadioBox {
+   @include tabListVertical()
+}
+
+.tab-list-item-verticalRadioBox {
+   @include tabListItemVertical()
+}
+
+.tab-list-active-verticalRadioBox {
+   @include tabListActiveVertical()
 }
 
 // START OF SCROLLABLE HORIZONTAL
