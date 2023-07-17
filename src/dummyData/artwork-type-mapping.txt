@@ -1,4 +1,4 @@
-RT => Radio Theatre
+CN => Cinema
 PM => Poem
 FW => Fiction
 PT => Painting

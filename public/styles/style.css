@@ -262,7 +262,7 @@
   border-radius: 15px;
   font-family: "Oswald";
   font-size: 2em;
-  padding: 0em 1em;
+  padding: 0.25em 1em;
   height: 50%;
   display: flex;
   align-items: center;
@@ -283,6 +283,8 @@
   .feed-create-button {
     margin-left: 0;
     margin-top: 6vh;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
   }
 }
 .desc-and-widget-container {
@@ -983,6 +985,60 @@
   background-color: rgb(234, 232, 230);
 }
 
+.tabs-scrollableHorizontal {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-list-scrollableHorizontal {
+  all: unset;
+  display: flex;
+  overflow: scroll;
+  overflow-wrap: normal;
+  padding: 0;
+}
+
+.tab-list-item-scrollableHorizontal {
+  all: unset;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 0.4em 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: normal;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  margin: 0.2em 0.3em;
+  font-family: "Abel", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tab-list-active-scrollableHorizontal {
+  all: unset;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 0.4em 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: normal;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  margin: 0.2em 0.3em;
+  font-family: "Abel", Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  margin: 0.3em 0.3em;
+  background-color: rgb(234, 232, 230);
+}
+
+.tab-content-scrollableHorizontal {
+  border-width: 2px 0 0 0;
+  padding: 1em 0.5em 1em 0.5em;
+}
+
 @media screen and (max-width: 1200px) {
   .tabs-vertical {
     all: unset;
@@ -1320,6 +1376,87 @@
   cursor: pointer;
 }
 
+.changeable-text-long {
+  border-width: 0 0 2px 0;
+  font-size: 0.9em;
+  resize: horizontal;
+  background: none;
+  border-style: solid;
+  min-width: 10%;
+  width: auto;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: border-color 1s ease 0s;
+}
+
+.changeable-text-long:focus {
+  outline: none;
+  border-color: black;
+}
+
+.create-description-textbox {
+  border-width: 0 0 2px 0;
+  font-size: 0.9em;
+  resize: horizontal;
+  background: none;
+  border-style: solid;
+  min-width: 10%;
+  width: auto;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: border-color 1s ease 0s;
+  margin-top: 0.5em;
+  padding: 1em;
+  overflow-y: scroll;
+  resize: none;
+  width: 20%;
+  min-width: 24em;
+  min-height: 4em;
+  background-color: Mintcream;
+  border-radius: 5px;
+}
+
+.create-description-textbox:focus {
+  outline: none;
+  border-color: black;
+}
+
+.create-long-description-textbox {
+  border-width: 0 0 2px 0;
+  font-size: 0.9em;
+  resize: horizontal;
+  background: none;
+  border-style: solid;
+  min-width: 10%;
+  width: auto;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: border-color 1s ease 0s;
+  margin-top: 0.5em;
+  padding: 1em;
+  overflow-y: scroll;
+  resize: none;
+  width: 40%;
+  min-width: 24em;
+  min-height: 4em;
+  background-color: Mintcream;
+  border-radius: 5px;
+}
+
+.create-long-description-textbox:focus {
+  outline: none;
+  border-color: black;
+}
+
 body {
   margin: 0;
   background-color: Mintcream;
@@ -1336,6 +1473,23 @@ body {
   padding: 0.2em 1em;
   padding-bottom: 0.3em;
   position: relative;
+}
+
+.regular-button {
+  all: unset;
+  cursor: pointer;
+  background-color: Mintcream;
+  color: black;
+  font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+  padding: 0.2em 1em;
+  padding-bottom: 0.3em;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.regular-button:hover {
+  color: white;
+  background-color: black;
 }
 
 .basic-button-text:after {
@@ -1376,6 +1530,15 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.fancy-title {
+  font-family: "Amatic SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 4em;
+}
+
+.playful {
+  font-family: "Amatic SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .flex-row {

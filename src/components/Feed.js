@@ -1,6 +1,7 @@
 import React from "react";
 import StatsWidget from "./StatsWidget";
 import ArtworkCard from "./ArtworkCard";
+import { Link } from "react-router-dom";
 
 export default function Feed(props) {
 
@@ -101,7 +102,9 @@ export default function Feed(props) {
                 </div>
                 <div className="feed-create-container">
                     <i className="fas fa-palette fa-5x feed-palette"></i>
-                    <button className="feed-create-button" type="button">Create New Artwork</button>
+                    <Link to="/create" style={{"textDecoration": "none"}}>
+                        <button className="feed-create-button" type="button">Create New Artwork</button>
+                    </Link>
                 </div>
             </div>
 

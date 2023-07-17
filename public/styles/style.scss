@@ -65,6 +65,7 @@
 @import "./comment";
 @import "./feedback";
 @import "./overlay";
+@import "./create";
 
 body {
     margin: 0;
@@ -87,6 +88,26 @@ body {
     padding-bottom: 0.3em;
 
     position: relative;
+}
+
+.regular-button {
+    all: unset;
+    cursor: pointer;
+    background-color: $background-color;
+
+    color: black;
+    font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+
+    padding: 0.2em 1em;
+    padding-bottom: 0.3em;
+    border: 2px solid black;
+    border-radius: 5px;
+
+}
+
+.regular-button:hover {
+    color: white;
+    background-color: black;
 }
 
 .basic-button-text:after {
@@ -135,6 +156,15 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.fancy-title {
+    font-family: "Amatic SC", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 4em;
+}
+
+.playful {
+    font-family: "Amatic SC", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .flex-row {

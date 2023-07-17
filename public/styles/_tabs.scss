@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-// START OF SCROLLABLE HORIZONTAL
+// START OF SCROLLABLE HORIZONTAL MIXINS
 
 @mixin tabsScrollableHorizontal {
     display: flex;
@@ -48,7 +48,7 @@
 
 }
 
-// END OF SCROLLABLE HORIZONTAL
+// END OF SCROLLABLE HORIZONTAL MIXINS
 
 .tab-list {
     display: flex;
@@ -151,6 +151,36 @@
     background-color: rgb(234, 232, 230);
 
 }
+
+// START OF SCROLLABLE HORIZONTAL
+
+.tabs-scrollableHorizontal {
+    all: unset;
+    @include tabsScrollableHorizontal();
+}
+
+.tab-list-scrollableHorizontal {
+    all: unset;
+    @include tabListScrollableHorizontal();
+}
+
+.tab-list-item-scrollableHorizontal {
+    all: unset;
+    @include tabListItemScrollableHorizontal();
+}
+
+.tab-list-active-scrollableHorizontal {
+    all: unset;
+    @include tabListItemScrollableHorizontal();
+    @include tabListActiveScrollableHorizontal(); 
+}
+
+.tab-content-scrollableHorizontal {
+    border-width: 2px 0 0 0;
+    padding: 1em 0.5em 1em 0.5em;
+}
+
+// END OF SCROLLABLE HORIZONTAL
 
 // If the screen is not wide enough to accommodate vertical tabs, they will convert to scrollable-horizontal
 @media screen and (max-width: 1200px) {
