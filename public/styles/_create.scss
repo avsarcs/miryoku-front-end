@@ -60,3 +60,22 @@
 .create-long-description-textbox:focus {
     @include changeableTextFocus();
 }
+
+.big-textbox {
+    @include changeableText();
+    border: 2px solid black;
+    margin-top: 0.5em;
+    padding: 2em;
+    overflow-y: scroll;
+    resize: none;
+    width: 40%;
+    min-width: 24em;
+    min-height: 4em;
+    background-color: $background-color;
+    border-radius: 5px;
+}
+
+.big-textbox:focus {
+    @include changeableTextFocus();
+}
+

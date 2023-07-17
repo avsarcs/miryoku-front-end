@@ -1500,11 +1500,47 @@
   border-color: black;
 }
 
+.big-textbox {
+  border-width: 0 0 2px 0;
+  font-size: 0.9em;
+  resize: horizontal;
+  background: none;
+  border-style: solid;
+  min-width: 10%;
+  width: auto;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: border-color 1s ease 0s;
+  border: 2px solid black;
+  margin-top: 0.5em;
+  padding: 2em;
+  overflow-y: scroll;
+  resize: none;
+  width: 40%;
+  min-width: 24em;
+  min-height: 4em;
+  background-color: Mintcream;
+  border-radius: 5px;
+}
+
+.big-textbox:focus {
+  outline: none;
+  border-color: black;
+}
+
 body {
   margin: 0;
   background-color: Mintcream;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .basic-button {
@@ -1547,6 +1583,23 @@ body {
 }
 
 .everywhere-button:hover {
+  background-color: rgb(219, 217, 217);
+}
+
+.bordered-everywhere-button {
+  all: unset;
+  cursor: pointer;
+  background-color: Mintcream;
+  color: black;
+  font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 0.2em 1em;
+  padding-bottom: 0.3em;
+  position: relative;
+}
+
+.bordered-everywhere-button:hover {
   background-color: rgb(219, 217, 217);
 }
 

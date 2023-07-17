@@ -108,5 +108,25 @@
                         "score": "4.9",
                         "count": "120"
                     }
+                },
+                {
+                    "_id": "91",
+                    "title": "My Nice Painting",
+                    "type": "Painting",
+                    "tags": ["inspirational", "sad", "jaw dropping"],
+                    "ownerID": "75",
+                    "sortPriority": "100",
+                    "description": "I've been inspired by my physics homework",
+                    "longDescription": "The colors symbolize my will to live",
+                    "body":"https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg",
+                    "options": {
+                        "font-family": "Comic Sans"
+                    },
+                    "dateCreated": "2023-01-21T21:00:00.000Z",
+                    "dateUpdated": "2023-01-22T21:00:00.000Z",
+                    "rating": {
+                        "score": "4.9",
+                        "count": "120"
                     }
+                }
 ]

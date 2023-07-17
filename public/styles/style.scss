@@ -74,6 +74,10 @@ body {
     background-attachment: fixed;
 }
 
+img {
+    object-fit: cover;
+}
+
 // BUTTONS
 
 .basic-button {
@@ -126,6 +130,29 @@ body {
 }
 
 .everywhere-button:hover {
+
+    background-color: rgb(219, 217, 217);
+
+}
+
+.bordered-everywhere-button {
+    all: unset;
+    cursor: pointer;
+    background-color: $background-color;
+
+    color: black;
+    font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+
+    border: 2px solid black;
+    border-radius: 5px;
+
+    padding: 0.2em 1em;
+    padding-bottom: 0.3em;
+
+    position: relative;
+}
+
+.bordered-everywhere-button:hover {
 
     background-color: rgb(219, 217, 217);
 

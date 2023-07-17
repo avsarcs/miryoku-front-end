@@ -14,6 +14,7 @@ import Users from "../dummyData/dummy-user.json"
 import { useNavigate, Link, useParams } from "react-router-dom"
 import userEvent from "@testing-library/user-event";
 import { ChromePicker } from "react-color";
+import FlagOverlay from "../components/FlagOverlay";
 
 export default function Profile(props) {
 
@@ -486,9 +487,26 @@ const fontOptions = [
 
     }
 
+    // Part below is related to the flag overlay functionality
+    const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
+
+    const toggleFlagOverlay = () => {
+        setIsFlagOverlayOpen((prevState) => !prevState)
+    }
+
     return (
         <div className="profile-wrapper" style={profileStyle}>
-
+            { ownProfile &&
+            (
+            <FlagOverlay
+                isOpen={isFlagOverlayOpen}
+                onClose={toggleFlagOverlay}
+                forWhat={"profile"}
+                _id={profileOwner._id}
+                suspectID={profileOwner._id}
+                submitterID={props.user._id}/>
+            )
+            }
             <Overlay isOpen={isCustomizeOverlayOpen} onClose={toggleCustomizeOverlay}>
                 <form>
                     <Tabs customClass="vertical">
@@ -746,6 +764,7 @@ const fontOptions = [
                             <label onClick={toggleCustomizeOverlay} className="cool-label profile-customize-button">Customize Profile <i className="fas fa-cog"/></label>
                         </Link>)
                         }
+                        
                 <StatsWidget width="100%" user={profileOwner}></StatsWidget>
 
                 <div className="skills-display">
@@ -753,6 +772,14 @@ const fontOptions = [
                         const skillKey = skill.toLowerCase() + "Xp"
                         return <label className="cool-label skill-label">{skill + " | " + profileOwner.xpBySkill[skillKey] + "xp"}</label>
                     } ) }
+                    {
+                            ownProfile &&
+                            (<button
+                                style={{"all": "unset", "cursor": "pointer"}}
+                                onClick={toggleFlagOverlay}>
+                                    <i class="fas fa-flag"/>
+                            </button>)
+                        }
                 </div>
 
                 <Tabs customClass="dark-bg">

@@ -10,7 +10,7 @@ export default function Navbar(props) {
             <nav className="top-navbar">
                     <Link to="/" className="navbar-title">Miryoku</Link>
                 <div className="navbar-links">
-                    <Link className="navbar-link">Send Us Feedback</Link>
+                    <Link to="/feedback" className="navbar-link">Send Us Feedback</Link>
                     <Link className="navbar-link">Code of Conduct</Link>
                     <Link className="navbar-link">About</Link>
                     {props.hasAuth ? <Link to={"/profile/" + user._id} className="navbar-link">Your Profile</Link> : <Link className="navbar-link">Login</Link>}

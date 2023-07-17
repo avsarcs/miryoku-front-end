@@ -167,6 +167,7 @@ export default function Artwork(props) {
 
     const [userRating, setUserRating] = useState(parseInt(props.user.awRatings[artwork._id]))
 
+    // For video artworks
     const [youtubePlayerOpts, setYoutubePlayerOpts] = useState({
         height: '390',
         width: '640',
@@ -199,13 +200,38 @@ export default function Artwork(props) {
           }
         }
     
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize)
     
         // Clean up the event listener on component unmount
         return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }, []);
+          window.removeEventListener('resize', handleResize)
+        }
+      }, [])
+
+    // For image artworks
+    const [imageWidth, setImageWidth] = useState(0)
+
+    useEffect(() => {
+
+        if (window.innerWidth > 750) {
+            setImageWidth((prevImageWidth) => window.innerWidth - 400)
+        } else {
+            setImageWidth((prevImageWidth) => 350)
+        }
+
+        const handleResize = () => {
+            if (window.innerWidth > 750) {
+                setImageWidth((prevImageWidth) => window.innerWidth - 400)
+            }
+        }
+    
+        window.addEventListener('resize', handleResize)
+    
+        // Clean up the event listener on component unmount
+        return () => {
+          window.removeEventListener('resize', handleResize)
+        }
+      }, [])
 
     // Part below is related to the flag overlay functionality
     const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
@@ -270,6 +296,13 @@ export default function Artwork(props) {
                             style={{"marginTop": "1em"}}
                             videoId={artwork.body}
                             opts={youtubePlayerOpts}/>
+                    }
+
+                    {
+                        (artwork.type === "Painting") &&
+                        <div style={{"width": imageWidth}}>
+                            <img style={{"width": imageWidth}} alt="Painting" src={artwork.body} />
+                        </div>
                     }
 
                 </div>
