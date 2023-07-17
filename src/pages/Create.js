@@ -162,6 +162,68 @@ export default function Create(props) {
         })
         console.log("New artwork type: " + artworkType)
     }, [artworkType])
+
+    // Code for entering tags
+
+    const [tag, setTag] = useState("")
+    const [tagLimitWarning, setTagLimitWarning] = useState(false)
+    const [tagsJSX, setTagsJSX] = useState([])
+
+    const TAG_LIMIT = 15
+
+    // Handles tag input change
+    function handleTagChange(e) {
+        setTag(e.target.value)
+    }
+
+    // Updates searchData.tags as user enters or deletes tags
+    function handleTagClick(e) {
+
+        const cleanTag = tag.trim().toLowerCase()
+
+        if (cleanTag && newArtwork.tags.length < TAG_LIMIT) {
+            setNewArtwork( (prevNewArtwork) => {
+                    return {
+                        ...prevNewArtwork,
+                        tags: [...prevNewArtwork.tags, cleanTag]
+                    }
+                })   
+        }
+
+        if (newArtwork.tags.length >= TAG_LIMIT) {
+            setTagLimitWarning(true)
+        }
+
+            setTag("")       
+    }
+
+    // Removes tag when a tag label is clicked.
+    function removeTag(tag) {
+
+        const tagIndex = newArtwork.tags.indexOf(tag)
+
+        setNewArtwork((prevNewArtwork) => {
+            return {
+                ...prevNewArtwork,
+                tags: prevNewArtwork.tags.slice(0, tagIndex).concat( prevNewArtwork.tags.slice(tagIndex + 1) )
+            }
+        })
+    } 
+
+    React.useEffect( () => {
+
+        setTagsJSX( () => {
+            return newArtwork.tags.map( (tag, index) => {
+                const cleanTag = tag.trim().toLowerCase()
+                return (
+                    <label className="cool-label tag-label" onClick={() => removeTag(cleanTag)} name={cleanTag} key={index}>{cleanTag}</label>
+                )
+            } )
+        } )
+
+    }, [newArtwork.tags])
+
+    // End of code for entering tags
     
     // Code for MD editors
 
@@ -177,11 +239,11 @@ export default function Create(props) {
     })
 
     var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['bold', 'italic', 'underline', 'strike'], // styling
       
-        [{ 'header': 1 }, { 'header': 2 }],      // superscript/subscript
+        [{ 'header': 1 }, { 'header': 2 }], // headers
       
-        [{ 'size': ['small', false, 'large', 'huge'] }],                                         // remove formatting button
+        [{ 'size': ['small', false, 'large', 'huge'] }], // remove formatting button
       ];
 
     const textMD = []
@@ -303,6 +365,14 @@ export default function Create(props) {
                     />
                     <div className="margin-top" style={{"fontFamily": newArtwork.bodyStyle.fontFamily}}>Preview</div>
                 </div>
+
+                <div className="sleek-text margin-top">Add tags: <span className="faded-text">(Optional)</span></div>
+
+                    <div className="tag-filter filter-sub">
+                        <input className="tag-text-input" onChange={handleTagChange} value={tag} name="tags" type="text" maxLength="35"/>
+                        <button type="button" onClick={handleTagClick} className="add-tag-button">Add tag</button>
+                        {tagsJSX} 
+                    </div>
 
                 <h3 className="sleek-text" style={{"marginTop": "2em"}}>Pick the Artwork type</h3>
                 <Tabs customClass="scrollableHorizontal">
