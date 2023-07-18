@@ -210,6 +210,10 @@ img {
     font-size: 4em;
 }
 
+.slightly-larger {
+    font-size: 1.3em;
+}
+
 .playful {
     font-family: "Amatic SC", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -238,6 +242,15 @@ img {
 .margin-top {
     margin-top: 1em;
 }
+
+.border-it-column {
+    border-color: black;
+    border-style: solid;
+    border-top: 2px;
+    border-bottom: 2px;
+    padding: 2em;
+    text-align: center;
+  }
 
 @media screen and (max-width: 1200px) {
     .spaced-well {
