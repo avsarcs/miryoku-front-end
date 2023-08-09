@@ -69,17 +69,22 @@
 .epic-name-ego-bloat {
     margin: 2rem 0 1rem 0;
     text-align: center;
+    width: 100vw;
+    overflow-wrap: break-word;
 }
 
 .epic-user-about {
+    white-space: pre-line;
     font-size: 1.05em;
     border-radius: 2px;
     max-width: 80%;
+    overflow-wrap: break-word;
     margin-bottom: 1em;
 }
 
 .skills-display {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     margin-top: 2em;
 }
@@ -88,12 +93,16 @@
     display: flex;
     flex-flow: center;
     max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .feedback-feature {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .profile-overlay-bottom {

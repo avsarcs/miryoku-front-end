@@ -1,48 +1,157 @@
 import React, { useEffect, useRef, useState } from "react";
 import StatsWidget from "../components/StatsWidget"
 import Tabs from "../components/Tabs"
-import Artworks from "../dummyData/dummy-artworks.json"
 import ArtworkCard from "../components/ArtworkCard";
 import Feedback from "../components/Feedback";
 import Overlay from "../components/Overlay";
 import Select from "react-select"
 import { Checkbox, FormControlLabel, Slider } from "@mui/material";
 
-import Feedbacks from "../dummyData/dummy-feedbacks.json"
-import Users from "../dummyData/dummy-user.json"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightLong, faLeftLong } from "@fortawesome/free-solid-svg-icons";
+
+import axios from "../api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useUser } from "../context/UserContext";
+import useAuth from "../hooks/useAuth";
 
 import { useNavigate, Link, useParams } from "react-router-dom"
-import userEvent from "@testing-library/user-event";
 import { ChromePicker } from "react-color";
 import FlagOverlay from "../components/FlagOverlay";
+import ReadMore from "../components/ReadMore";
 
 export default function Profile(props) {
 
     const { 
-        hasAuth,
-        user
+        hasAuth
     } = props
-
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
     const { id } = useParams()
-
-    const profileOwner = Users.filter((user) => parseInt(user._id) === parseInt(id))[0]
-
-    const { profileStyle } = user
-
-    const userArtworks = Artworks.filter((artwork) => parseInt(artwork.ownerID) === parseInt(profileOwner._id))
-    const userFeedback = Feedbacks.filter( (feedback) => parseInt(profileOwner._id) === parseInt(feedback.ownerID) )
-
-    const featuredArtworksExist = profileOwner.featuredArtworks.length !== 0;
-    const userHasFeedback = userFeedback.length !== 0;
-
-    const ownProfile = parseInt(user._id) === parseInt(id)
-
     const navigate = useNavigate()
+    const { user } = useUser()
+    const [profileOwner, setProfileOwner] = useState({})
 
-    React.useEffect(() => {
-        if (!hasAuth) navigate("/")
+    // PAGINATION OF FEATURED ARTWORKS
+    const [currentArtworkPage, setCurrentArtworkPage] = useState(1)
+    const [maxArtworkPages, setMaxArtworkPages] = useState(1)
+
+    const [profileOwnerFeaturedArtworks, setProfileOwnerFeaturedArtworks] = useState([])
+
+    // Populate profileOwnerFeaturedArtworks whenever another page needs to be loaded
+    useEffect(() => {
+        if (profileOwner?._id) {
+        const populateProfileOwnerFeaturedArtworks = async () => {
+            try {
+                const fetchedArtworks = await axios.get(`/artwork/featured/${profileOwner?._id}?page=${currentArtworkPage}`)
+                setProfileOwnerFeaturedArtworks(fetchedArtworks.data.docs)
+                setMaxArtworkPages(fetchedArtworks.data.totalPages)
+            } catch (error) {
+                console.error(error)
+            }
+            
+        }
+
+        populateProfileOwnerFeaturedArtworks()
     }
-        , [])
+
+    }, [currentArtworkPage, profileOwner])
+
+
+    // END OF CODE RELATED TO PAGINATION OF FEATURED ARTWORKS
+
+    // PAGINATION OF FEEDBACKS
+
+    const [currentFeedbackPage, setCurrentFeedbackPage] = useState(1)
+    const [maxFeedbackPages, setMaxFeedbackPages] = useState(1)
+
+    const [profileOwnerFeedbacks, setProfileOwnerFeedbacks] = useState([])
+
+    useEffect(() => {
+        if (profileOwner?._id) {
+            const populateProfileOwnerFeedbacks = async () => {
+                try {
+                    const fetchedFeedbacks = await axios.get(`/feedback/user/${profileOwner._id}?page=${currentFeedbackPage}`)
+                    setProfileOwnerFeedbacks(fetchedFeedbacks.data.docs)
+                    setMaxFeedbackPages(fetchedFeedbacks.data.totalPages)
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+
+            populateProfileOwnerFeedbacks()
+        }
+    }, [currentFeedbackPage, profileOwner])
+
+
+    // END OF CODE RELATED TO PAGINATION OF FEEDBACKS
+
+    // Populate profile owner
+    useEffect(() => {
+        
+        const populateProfileOwner = async () => {
+            try {
+                const fetchedUser = await axios.get(`/user/${id}`)
+                setProfileOwner(fetchedUser.data)
+            } catch (error) {
+                
+            }
+            
+        }
+
+        populateProfileOwner()        
+    }, [])
+
+    
+    // Populate customProfile once the profileOwner is fetched
+    const [customProfile, setCustomProfile] = useState({})
+
+    useEffect(() => {
+        setCustomProfile(profileOwner)
+    }, [profileOwner])
+
+    // Populate profileOwnerArtworks
+    const [profileOwnerArtworks, setProfileOwnerArtworks] = useState([])
+
+    useEffect(() => {
+
+        // TRY OPTIONAL CHAINING IF YOU ENCOUNTER AN ERROR
+        if (profileOwner && Object.keys(profileOwner).length !== 0) {
+            const populateProfileOwnerArtworks = async () => {
+
+                try {
+                    const fetchedArtworks = await axios.get(`/artwork/user/${profileOwner._id}`)
+                    setProfileOwnerArtworks( fetchedArtworks.data )
+                } catch (error) {
+                    
+                }
+                
+            }
+
+            populateProfileOwnerArtworks()
+        }
+
+        setTimeout(() => {
+            console.log("Profile owner artworks: " + JSON.stringify(profileOwnerArtworks))
+        }, 1000);
+
+        console.log("Profile owner featuredArtworks: " + profileOwner?.featuredArtworks)
+
+    }, [profileOwner])
+
+    // After the profile owner is fetched, determine if ownProfile or not.
+    const [ownProfile, setOwnProfile] = useState(false)
+
+    useEffect(() => {
+        setOwnProfile( profileOwner?._id === user?._id )
+    }, [profileOwner, user])
+
+    const featuredArtworksExist = profileOwner?.featuredArtworks?.length !== 0;
+    const [userHasFeedback, setUserHasFeedback] = useState(profileOwnerFeedbacks?.length !== 0);
+
+    useEffect(() => {
+        setUserHasFeedback(profileOwnerFeedbacks?.length !== 0)
+    }, [profileOwnerFeedbacks])
 
     // Part below until the return statement is related to the functionality of the overlay that lets the user customize their profile
     const [isCustomizeOverlayOpen, setIsCustomizeOverlayOpen] = useState(false)
@@ -50,8 +159,6 @@ export default function Profile(props) {
     const toggleCustomizeOverlay = () => {
         setIsCustomizeOverlayOpen((prevState) => !prevState)
     }
-
-    const [customProfile, setCustomProfile] = useState(user)
 
     const updateProfile = (e) => {
       
@@ -134,16 +241,21 @@ const fontOptions = [
         ( (_option) => 
             {   return _option.value ===
                     customProfile
-                    .profileStyle
-                    .aboutStyle
-                    .fontFamily
-                    .split(",")[0]
+                    ?.profileStyle
+                    ?.aboutStyle
+                    ?.fontFamily
+                    ?.split(",")[0]
             }
         )[0]
 
     )
 
-    const [titleOutlineChecked, setTitleOutlineChecked] = useState( customProfile.profileStyle.nameStyle.textShadow.length !== 0 )
+    const [titleOutlineChecked, setTitleOutlineChecked] = useState( customProfile?.profileStyle?.nameStyle?.textShadow )
+
+    // update titleOutlineChecked as customProfile updates
+    useEffect(() => {
+        setTitleOutlineChecked( customProfile?.profileStyle?.nameStyle?.textShadow )
+    }, [customProfile])
 
     const handleTitleOutlineCheckbox = (e) => {
         setTitleOutlineChecked(e.target.checked)
@@ -152,7 +264,7 @@ const fontOptions = [
 
     const toggleTitleOutline = () => {
 
-        if ( customProfile.profileStyle.nameStyle.textShadow.length !== 0 ) {
+        if ( customProfile?.profileStyle?.nameStyle?.textShadow?.length !== 0 ) {
             updateNameStyle("textShadow", "")
         }
         else {
@@ -172,7 +284,7 @@ const fontOptions = [
 
     }
 
-    const [aboutFontSliderValue, setAboutFontSliderValue] = useState(parseFloat(customProfile.profileStyle.aboutStyle.fontSize.split("em")[0]))
+    const [aboutFontSliderValue, setAboutFontSliderValue] = useState(parseFloat(customProfile?.profileStyle?.aboutStyle?.fontSize?.split("em")[0]))
 
     const handleAboutFontSize = (e) => {
         const { value } = e.target
@@ -185,7 +297,7 @@ const fontOptions = [
     
     // Code for making the sliders work
 
-    const [titleSpacingValue, setTitleSpacingValue] = useState(parseFloat(customProfile.profileStyle.nameStyle.letterSpacing.split("em")[0]))
+    const [titleSpacingValue, setTitleSpacingValue] = useState(parseFloat(customProfile?.profileStyle?.nameStyle?.letterSpacing?.split("em")[0]))
 
     const handleTitleSpacingSlider = (e) => {
         const { value } = e.target
@@ -195,7 +307,7 @@ const fontOptions = [
         updateNameStyle("letterSpacing", newSpacing)
     }
 
-    const [titleFontSliderValue, setTitleFontSliderValue] = useState(parseFloat(customProfile.profileStyle.nameStyle.fontSize.split("em")[0]))
+    const [titleFontSliderValue, setTitleFontSliderValue] = useState(parseFloat(customProfile?.profileStyle?.nameStyle?.fontSize?.split("em")[0]))
     
     const handleTitleFontSize = (e) => {
         const { value } = e.target
@@ -305,9 +417,6 @@ const fontOptions = [
         const { id } = e.target
 
         let newAboutStyle
-        
-        console.log("You triggered replaceAboutStyle!")
-        console.log("id: " + id)
 
         switch (id) {
             case "about-bg-1":
@@ -480,12 +589,38 @@ const fontOptions = [
     const [selectedAboutBox, setSelectedAboutBox] = useState(null)
     
     // TODO for when you are writing the back end
-
+    const accessTokenRefreshed = useRef(0)
     // Make this the onClick property of the "Apply changes button"
     // Apply the changes reflected in the "customProfile" state to the user's real profile through an API endpoint.
-    const applyChanges = () => {
-
+    const handleCustomizeProfileSubmit = async (e) => {
+        e.preventDefault()  
+            await axiosPrivate.patch(`/user/${profileOwner._id}`, customProfile)
+            navigate(0)
     }
+
+    // Make the profile name show without wrapping on mobile screens
+    useEffect(() => {
+        if (profileOwner?.profileStyle?.nameStyle) {
+            const { nameStyle } = profileOwner?.profileStyle
+
+            if ((nameStyle?.fontSize.split("em")[0] * 16 * profileOwner?.name?.length) > window.innerWidth ) {
+                setProfileOwner((prevProfileOwner) => {
+                    return {
+                        ...prevProfileOwner,
+                        profileStyle: {
+                            ...prevProfileOwner.profileStyle,
+                            nameStyle: {
+                                ...prevProfileOwner.profileStyle.nameStyle,
+                                fontSize: `${(window.innerWidth / profileOwner?.name?.length) + 7
+                                - (parseFloat(nameStyle?.letterSpacing?.split("em")[0]) * 10)}px`
+                            }
+                        }
+                    }
+                })
+            }
+
+        }
+    }, [profileOwner?.profileStyle?.nameStyle])
 
     // Part below is related to the flag overlay functionality
     const [isFlagOverlayOpen, setIsFlagOverlayOpen] = useState(false)
@@ -495,20 +630,23 @@ const fontOptions = [
     }
 
     return (
-        <div className="profile-wrapper" style={profileStyle}>
-            { ownProfile &&
+        <div className="profile-wrapper" style={profileOwner?.profileStyle}>
+            { auth?.accessToken &&
             (
             <FlagOverlay
                 isOpen={isFlagOverlayOpen}
                 onClose={toggleFlagOverlay}
                 forWhat={"profile"}
-                _id={profileOwner._id}
-                suspectID={profileOwner._id}
-                submitterID={props.user._id}/>
+                _id={profileOwner?._id}
+                suspectID={profileOwner?._id}
+                submitterID={user?._id}/>
             )
             }
-            <Overlay isOpen={isCustomizeOverlayOpen} onClose={toggleCustomizeOverlay}>
-                <form>
+            { ownProfile &&
+            
+            (
+                <Overlay isOpen={isCustomizeOverlayOpen} onClose={toggleCustomizeOverlay}>
+                <form onSubmit={handleCustomizeProfileSubmit}>
                     <Tabs customClass="vertical">
 
                     <div label="Change Personal Info">
@@ -516,27 +654,27 @@ const fontOptions = [
                                 <div className="overlay-customize-wrapper">
                                     <div className="overlay-profile-general">
                                         <div className="overlay-form-label">Current name:</div>
-                                        { user.nameChanged ?
-                                            <textarea readOnly className="changeable-text margin-left" rows={1}>{customProfile.name}</textarea> :
-                                            <textarea name="name" onChange={updateProfile}
-                                            className="changeable-text margin-left" rows={1}>{customProfile.name}</textarea> }
+                                        { user?.nameChanged ?
+                                            <textarea maxLength={25} readOnly className="changeable-text margin-left" rows={1}>{customProfile?.name}</textarea> :
+                                            <textarea maxLength={25} name="name" onChange={updateProfile}
+                                            className="changeable-text margin-left" rows={1}>{customProfile?.name}</textarea> }
                                     </div>
                                 </div>
                                 <div className="faded-text">
-                                    <div style={{"marginTop": "1em"}}>{customProfile.nameChanged ? "You cannot change your name since you've already changed it once" : "You can change your name only once"}</div>
+                                    <div style={{"marginTop": "1em"}}>{customProfile?.nameChanged ? "You cannot change your name since you've already changed it once" : "You can change your name only once"}</div>
                                 </div>
                                 <div className="overlay-customize-wrapper flex-column">
                                     <div className="overlay-profile-desc-label">
                                         About:
                                     </div>
-                                    <textarea name="about" onChange={updateProfile} className="changeable-text about-customize">
-                                        {customProfile.about}
+                                    <textarea name="about" maxLength="30000" onChange={updateProfile} className="changeable-text about-customize">
+                                        {customProfile?.about}
                                     </textarea>
                                 </div>
                                 <div className="overlay-customize-wrapper">
                                     <div className="overlay-profile-general">
                                         <div className="overlay-form-label">Current email:</div>
-                                            <textarea name="email" onChange={updateProfile} className="changeable-text email-customize margin-left" rows={1}>{customProfile.email}</textarea>
+                                            <textarea name="email" onChange={updateProfile} className="changeable-text email-customize margin-left" rows={1}>{customProfile?.email}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -572,13 +710,14 @@ const fontOptions = [
                                     </div>
 
                                     <div className="margin-top margin-bottom">Font</div>
-                                    
+                                    <div className="select-menu">
                                     <Select
                                         value={defaultAboutFontOption}
                                         onChange={handleAboutFontCustomize}
                                         options={fontOptions}
                                         isSearchable={true}
                                     />
+                                    </div>
 
                                     <div className="margin-top margin-bottom">Font Size</div>
                                 
@@ -594,7 +733,7 @@ const fontOptions = [
 
                                     <div className="margin-top flex-column">
                                         <div className="margin-bottom">Preview:</div>
-                                        <div style={customProfile.profileStyle.aboutStyle} className="about-customize-preview">This is how your about section will look like</div>
+                                        <div style={customProfile?.profileStyle?.aboutStyle} className="about-customize-preview">This is how your about section will look like</div>
                                     </div>
 
                                     
@@ -634,12 +773,14 @@ const fontOptions = [
                                 <h2>Title</h2>
 
                                     <div className="margin-top margin-bottom">Font</div>
+                                    <div className="select-menu">
                                     <Select
                                         value={defaultAboutFontOption}
                                         onChange={handleTitleFontCustomize}
                                         options={fontOptions}
                                         isSearchable={true}
                                     />
+                                    </div>
 
                                     <div className="margin-top margin-bottom">Size</div>
                                     <Slider
@@ -666,7 +807,7 @@ const fontOptions = [
 
                                     <strong className="margin-top margin-bottom">Color</strong>
                                     <ChromePicker style={{"zIndex": "-10"}}
-                                        color={customProfile.profileStyle.nameStyle.color}
+                                        color={customProfile?.profileStyle?.nameStyle?.color}
                                         onChange={(newColor) => {
                                             updateNameStyle("color", newColor.hex)
                                         }}
@@ -691,12 +832,12 @@ const fontOptions = [
                                         }}>
                                         
                                         <div
-                                            style={{...customProfile.profileStyle.nameStyle,
-                                                "fontSize": customProfile.profileStyle.nameStyle.fontSize,
-                                                "backgroundImage": customProfile.profileStyle.backgroundImage,
+                                            style={{...customProfile?.profileStyle?.nameStyle,
+                                                "fontSize": customProfile?.profileStyle?.nameStyle?.fontSize,
+                                                "backgroundImage": customProfile?.profileStyle?.backgroundImage,
                                                 "textAlign": "center"}}
                                             className="title-customize-preview">
-                                                {customProfile.name}
+                                                {customProfile?.name}
                                             </div>
                                     </div>
                                 </div>
@@ -707,16 +848,16 @@ const fontOptions = [
                                 <div className="faded-text">Click on an artwork to change its state</div>
                                 <h3>Featured Artworks</h3>
                                 {
-                                    customProfile.featuredArtworks.length ? "" : <div className="faded-text">None</div>
+                                    customProfile?.featuredArtworks?.length ? "" : <div className="faded-text">None</div>
                                 }
                                 <div className="large-backgrounds-display artwork-selection" style={{"maxHeight": "300px"}}>
                                     {
-                                        customProfile.featuredArtworks.map( (featuredArtworkID) => {
+                                        customProfile?.featuredArtworks?.map( (featuredArtworkID) => {
                                             return (<label
                                                 id={featuredArtworkID}
                                                 className="name-display-simple"
                                                 onClick={toggleFeaturedArtwork}>
-                                                {Artworks.find((artwork) => parseInt(artwork._id) === parseInt(featuredArtworkID)).title}
+                                                {profileOwnerArtworks && profileOwnerArtworks?.find((artwork) => artwork._id === featuredArtworkID)?.title}
                                             </label>)
                                         } )
                                     }
@@ -724,12 +865,11 @@ const fontOptions = [
                                 <h3>Other Artworks</h3>
                                 <div className="large-backgrounds-display artwork-selection" style={{"maxHeight": "300px"}}>
                                     {
-                                        Artworks
-                                            .filter( artwork => parseInt(artwork.ownerID) === parseInt(customProfile._id))
-                                            .filter( artwork => !customProfile.featuredArtworks.includes(
+                                        profileOwnerArtworks
+                                            ?.filter( artwork => !customProfile?.featuredArtworks?.includes(
                                                 artwork._id
                                             ) )
-                                            .map( (artwork) => {
+                                            ?.map( (artwork) => {
                                                 return (
                                                     <label
                                                         id={artwork._id}
@@ -750,13 +890,22 @@ const fontOptions = [
                     </div>
                 </form>
             </Overlay>
+            )
+
+            }
+            
 
             <div className="profile-container" >
-                <div className="epic-name-ego-bloat" style={profileStyle.nameStyle}>
-                    {profileOwner.name}
+                <div className="epic-name-ego-bloat" style={profileOwner?.profileStyle?.nameStyle}>
+                    {profileOwner?.name}
                 </div>
-                <div className="epic-user-about" style={profileStyle.aboutStyle}>
-                    {profileOwner.about}
+                <div className="epic-user-about" style={profileOwner?.profileStyle?.aboutStyle}>
+                    {profileOwner?.about ? <ReadMore>{profileOwner?.about}</ReadMore> :
+                        <span>
+                            {profileOwner?.name} is an artist that chose The Way of the silence <br/> (No about)
+                        </span>    
+                        }
+                        
                 </div>
                     {
                         ownProfile &&
@@ -765,41 +914,97 @@ const fontOptions = [
                         </Link>)
                         }
                         
-                <StatsWidget width="100%" user={profileOwner}></StatsWidget>
+                {   profileOwner ?
+                    <StatsWidget width="100%" user={profileOwner}></StatsWidget>
+                    : ""
+                }
 
                 <div className="skills-display">
-                    { profileOwner.skills.map( (skill) => {
+                    { profileOwner ? profileOwner?.skills?.map( (skill) => {
                         const skillKey = skill.toLowerCase() + "Xp"
                         return <label className="cool-label skill-label">{skill + " | " + profileOwner.xpBySkill[skillKey] + "xp"}</label>
-                    } ) }
+                    } )
+                    : "" }
                     {
                             ownProfile &&
                             (<button
                                 style={{"all": "unset", "cursor": "pointer"}}
                                 onClick={toggleFlagOverlay}>
-                                    <i class="fas fa-flag"/>
+                                    <i className="fas fa-flag"/>
                             </button>)
                         }
                 </div>
 
                 <Tabs customClass="dark-bg">
-                    <div isVisible={featuredArtworksExist} label="Featured Artworks"> <div className="artwork-feature">
+                    <div label="Featured Artworks">
+                        <div className="artwork-feature">
                             {
-                                profileOwner.featuredArtworks.map( (featuredArtworkID) => {
+                                featuredArtworksExist ? (<> {
+
+                                    profileOwnerFeaturedArtworks?.map( (featuredArtworkID, index) => {
                                             return (<ArtworkCard
-                                                artwork={Artworks.find((artwork) => parseInt(artwork._id) === parseInt(featuredArtworkID))}
+                                                artwork={profileOwnerFeaturedArtworks[index]}
                                             />)
                                         } )
+                                        }
+                                        
+                                        <div className="margin-top margin-bottom page-buttons">
+                                        { currentArtworkPage > 1 ?
+                                            <button onClick={() => {setCurrentArtworkPage((currentPage) => currentPage - 1)}} style={{"all": "unset", "cursor": "pointer"}}>
+                                                <FontAwesomeIcon className="margin-right" icon={faLeftLong} size="2xl"/>
+                                            </button>
+                                            :
+                                            <div className="margin-right"></div>
+                                        }
+                                        {maxArtworkPages > 1 && <div className="sleek-text slightly-larger">{currentArtworkPage}</div>}
+                                        { currentArtworkPage < maxArtworkPages ?
+                                            <button onClick={() => {setCurrentArtworkPage((currentPage) => currentPage + 1)}} style={{"all": "unset", "cursor": "pointer"}}>
+                                                <FontAwesomeIcon className="margin-left" icon={faRightLong} size="2xl"/>
+                                            </button>
+                                            :
+                                            <div className="margin-left"></div>
+                                        }
+                                        
+                                    </div>
+
+                                        </>)
+                                        :
+                                        <span className="sleek-text margin-bottom">{profileOwner?.name} has no featured artworks</span>
+                        
                             }
-                    </div> </div>
-                    <div isVisible={userHasFeedback} label="Reviews (Feedbacks)"> <div className="feedback-feature">
+                        </div>
+                    </div>
+                    <div label="Reviews (Feedbacks)">
+                        <div className="feedback-feature">
                         {
-                            userFeedback.map((feedback) => {return (
+                            userHasFeedback ? profileOwnerFeedbacks.map((feedback) => {return (
                                 <Feedback isOutside={true} key={feedback._id} feedback={feedback} user={user} hasAuth={hasAuth} />
                             )})
+                            :
+                            <span className="sleek-text margin-bottom">{profileOwner?.name} did not write any feedback</span>
                         }
-                    </div></div>
-                    <div label="Activity"></div>
+
+                        <div className="margin-top margin-bottom page-buttons">
+                                { currentFeedbackPage > 1 ?
+                                    <button onClick={() => {setCurrentFeedbackPage((currentPage) => currentPage - 1)}} style={{"all": "unset", "cursor": "pointer"}}>
+                                        <FontAwesomeIcon className="margin-right" icon={faLeftLong} size="2xl"/>
+                                    </button>
+                                    :
+                                    <div className="margin-right"></div>
+                                }
+                                {maxFeedbackPages > 1 && <div className="sleek-text slightly-larger">{currentFeedbackPage}</div>}
+                                { currentFeedbackPage < maxFeedbackPages ?
+                                    <button onClick={() => {setCurrentFeedbackPage((currentPage) => currentPage + 1)}} style={{"all": "unset", "cursor": "pointer"}}>
+                                        <FontAwesomeIcon className="margin-left" icon={faRightLong} size="2xl"/>
+                                    </button>
+                                    :
+                                    <div className="margin-left"></div>
+                                }
+                                
+                            </div>
+
+                        </div>
+                    </div>
                 </Tabs>
             </div>
         </div>

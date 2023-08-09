@@ -34,7 +34,7 @@
     overflow-y: scroll;
     resize: none;
     width: 20%;
-    min-width: 24em;
+    min-width: 15em;
     min-height: 4em;
     background-color: $background-color;
     border-radius: 5px;
@@ -51,7 +51,7 @@
     overflow-y: scroll;
     resize: none;
     width: 40%;
-    min-width: 24em;
+    min-width: 15em;
     min-height: 4em;
     background-color: $background-color;
     border-radius: 5px;
@@ -69,7 +69,7 @@
     overflow-y: scroll;
     resize: none;
     width: 40%;
-    min-width: 24em;
+    min-width: 15em;
     min-height: 4em;
     background-color: $background-color;
     border-radius: 5px;
@@ -79,3 +79,6 @@
     @include changeableTextFocus();
 }
 
+.select-menu {
+    max-width: 80vw;
+}

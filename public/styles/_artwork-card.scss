@@ -20,6 +20,8 @@
     padding: 1em 1.6em 1.2em 1.6em;
     position: relative;
 
+    overflow-wrap: break-word;
+
     height: auto;
 
     background: white;
@@ -92,4 +94,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+    .artwork-card {
+        max-width: 80vw;
+    }
+
+    .card-bottom-details {
+        flex-direction: column;
+    }
 }

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 10vh;
 }
 
 // HOME > STORY ONE
@@ -11,8 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10vh;
-    height: 90vh;
+    height: 100vh;
     font-family: "Unbounded", sans-serif;
     
     h1 {
@@ -39,6 +37,58 @@
 .story-two {
     background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
     color: white;
+}
+
+@media screen and (max-height: 900px) {
+    .story-two {
+        padding-bottom: 200vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .story-two {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .story-one {
+        padding-top: -10vh;
+        padding-bottom: 10vh;
+    }
+
+    .story-two {
+        padding-bottom: 40vh;
+    }
+}
+
+@media (max-height: 720px) {
+    .story-one {
+        padding-bottom: 30vh;
+    }
+
+    .story-two {
+        padding-bottom: 80vh;
+    }
+}
+
+@media (max-height: 570px) {
+    .story-one {
+        padding-bottom: 60vh;
+    }
+    .story-two {
+        padding-bottom: 130vh;
+    }
+}
+
+@media (max-height: 440px) {
+    .story-one {
+        padding-bottom: 80vh;
+    }
+    .story-two {
+        padding-bottom: 170vh;
+    }
 }
 
 .jump-a-line {
@@ -98,12 +148,12 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    top: 10vh;
+    top: 0;
     z-index: -1;
     left: 0;
     margin: 0;
     padding: 0;
-    background: #a6a9e3;
+    background: #f9e0c9;
     overflow: hidden;
 }
 .background li {
@@ -112,7 +162,7 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(212, 151, 121, 0.2);
     animation: animate 36s linear infinite;
 }
 

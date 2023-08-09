@@ -1,29 +1,46 @@
 import { useEffect, useState } from "react"
 import Overlay from "../components/Overlay"
 import Tabs from "./Tabs"
-import Tab from "./Tab"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
 
 export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, submitterID}) {
 
-    const [newFlag, setNewFlag] = useState({
+    
+
+    const [flag, setFlag] = useState({
         "_id": _id,
         "type": "",
         "for": forWhat,
         "suspectID": suspectID,
-        "dateSubmitted": new Date().toISOString(),
         "submitterID": submitterID
     })
 
-    const [flagSubmitted, setFlagSubmitted] = useState(false)
+    useEffect(() => {
+        setFlag({
+            "_id": _id,
+            "type": "",
+            "for": forWhat,
+            "suspectID": suspectID,
+            "submitterID": submitterID
+        })
+    }, [forWhat, suspectID, submitterID, _id])
 
     useEffect(() => {
-        console.log("Most current flag type: " + newFlag.type)
-    }, [newFlag])
+        console.log("current flag is: " + JSON.stringify(flag))
+    }, [flag])
 
-    const submitFlag = () => {
+    const axiosPrivate = useAxiosPrivate()
+
+    const [flagSubmitted, setFlagSubmitted] = useState(false)
+
+    // useEffect(() => {
+    //     console.log("Most current flag type: " + newFlag.type)
+    // }, [newFlag])
+
+    const submitFlag = async () => {
         // Actually submit flag (back-end)
-        setFlagSubmitted((prevFlagSubmitted) => true)
-        console.log("flagSubmitted is: " + flagSubmitted)
+        await axiosPrivate.post("/flag", flag)
+        setFlagSubmitted(true)
     }
 
     return (
@@ -37,7 +54,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
             <div className="flex-column" style={{"alignItems": "center"}}>
             <Tabs customClass="verticalRadioBox">
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Harassment"
@@ -45,7 +62,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
                     })
                 }} label="Harassment"/>
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Bullying"
@@ -53,7 +70,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
                     })
                 }} label="Bullying"/>
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Inappropriate content"
@@ -61,7 +78,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
                     })
                 }} label="Inappropriate content"/>
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Hate speech"
@@ -69,7 +86,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
                     })
                 }} label="Hate speech"/>
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Suicidal"
@@ -77,7 +94,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
                     })
                 }} label="Suicidal content"/>
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Plagiarism"
@@ -85,7 +102,7 @@ export default function FlagOverlay({isOpen, onClose, forWhat, _id, suspectID, s
                     })
                 }} label="Plagiarism"/>
                 <div onClick={() => {
-                    setNewFlag((prevNewFlag) => {
+                    setFlag((prevNewFlag) => {
                         return {
                             ...prevNewFlag,
                             type: "Spam"

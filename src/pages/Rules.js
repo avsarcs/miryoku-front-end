@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function Rules(props) {
 
@@ -20,7 +21,7 @@ export default function Rules(props) {
             }
             else
             {
-                setRestrictWidth((prevRestrictWidth) => "60vw")
+                setRestrictWidth((prevRestrictWidth) => "90vw")
             }
         }
     
@@ -38,9 +39,9 @@ export default function Rules(props) {
                 <div className="flex-column" style={{"alignItems": "center", "justifyContent": "center"}}>
                     <div className="flex-column fancy-title"
                     style={{"height": "30vh",
-                            "justifyContent": "center"}}> How it works?</div>
+                            "justifyContent": "center", "textAlign": "center"}}> How it works?</div>
                     <div className="margin-bottom sleek-text slightly-larger border-it-column">
-                        <div className="margin-bottom">First, if you do not have a profile yet, you can quickly create one 👉 here 👈<br/>
+                        <div className="margin-bottom">First, if you do not have a profile yet, you can quickly create one <Link style={{"all": "unset", "cursor": "pointer"}} to="/signup">👉 <u>here</u> 👈</Link><br/>
                         Rest of this page assumes that you are logged in.</div>
                         <h3>Sharing an artwork</h3>
                         <div className="margin-bottom">In order to create an artwork, go on the Home Page and click on the <strong>Create New Artwork</strong> button.</div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 export default function StarRating(props) {
     const { currentUserRating, handleClick, starCount } = props
@@ -23,6 +23,10 @@ export default function StarRating(props) {
         , [])
 
     React.useEffect(() => {
+        setUserRating(currentUserRating)
+    }, [currentUserRating])
+
+    React.useEffect(() => {
         setStarsJSX( (prevStarsJSX, index) => {
             const newStarsJSX = []
 
@@ -41,9 +45,23 @@ export default function StarRating(props) {
         } )
     }, [ratingStarsState])
 
+    const timesLoaded = useRef(0)
+
     React.useEffect( () => {
         resetStarGlow()
-        handleClick(userRating)
+        if (starCount === 10 && timesLoaded.current > 0) {
+            handleClick(userRating)
+        } else {
+
+            if (userRating !== 0 && timesLoaded.current > 1) {
+                handleClick(userRating)
+            }
+            else if (userRating === 0 && timesLoaded.current > 1) {
+                handleClick(userRating)
+            } else {
+                timesLoaded.current++
+            }
+        }       
     }
     , [userRating])
 

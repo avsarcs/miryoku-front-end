@@ -46,7 +46,7 @@ class Tabs extends Component {
         return (
             <div className={customClass ? ("tabs-" + customClass) : "tabs"}>
                 <ol className={customClass ? ("tab-list-" + customClass) : "tab-list"}>
-                    {children.map( (child) => {
+                    {children.map( (child, index) => {
                         const { label, isVisible, onClick: customOnClick } = child.props
                         
                         return (
@@ -54,7 +54,7 @@ class Tabs extends Component {
                                 <Tab
                                     activeTab={activeTab}
                                     style={isVisible === undefined ? {} : (isVisible === true ? {} : {"display": "none"})}
-                                    key={label}
+                                    key={index}
                                     label={label}
                                     customClass={customClass}
                                     onClick={onClickTabItem}

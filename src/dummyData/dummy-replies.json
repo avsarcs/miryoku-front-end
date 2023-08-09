@@ -1,6 +1,5 @@
 [
     {
-        "_id": "55",
         "parentID": "20123",
         "body": "So true. I am crying by myself right now.",
         "ownerID": "75",
@@ -10,7 +9,6 @@
         "dateUpdated": "2023-01-22T21:00:00.000Z"
     },
     {
-        "_id": "55",
         "parentID": "20123",
         "body": "So true. I am crying by myself right now.",
         "ownerID": "75",
@@ -20,7 +18,6 @@
         "dateUpdated": "2023-01-22T21:00:00.000Z"
     },
     {
-        "_id": "66",
         "parentID": "332",
         "body": "So true. I am crying by myself right now.",
         "ownerID": "75",
@@ -30,7 +27,6 @@
         "dateUpdated": "2023-01-22T21:00:00.000Z"
     },
     {
-        "_id": "55",
         "parentID": "20123",
         "body": "So true. I am crying by myself right now.",
         "ownerID": "75",

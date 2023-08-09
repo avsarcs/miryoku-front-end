@@ -53,63 +53,153 @@
 @import url("https://fonts.googleapis.com/css?family=Anton");
 @import url("https://fonts.googleapis.com/css?family=Catamaran");
 @import url("https://fonts.googleapis.com/css?family=Cormorant");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Abel");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Abel");
 @import url("https://fonts.googleapis.com/css?family=Raleway");
-.top-navbar {
+.instructions {
+  display: block;
+}
+
+.offscreen {
+  display: none;
+}
+
+.auth-card {
+  background-color: Mintcream;
+  border: 2px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  padding: 1em 3em 1em 3em;
+  padding-right: 4em;
+  max-width: 80vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  position: fixed;
-  z-index: 1;
+  justify-content: center;
+}
+
+.auth-card:focus {
+  padding: 0em;
+}
+
+.auth-field {
+  border-radius: 5px;
+  padding: 1em;
+  font-family: "Barlow";
+}
+
+.auth-field-label {
+  margin-bottom: 0.5em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: Mintcream;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar {
   height: 10vh;
-  width: 100vw;
-  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
-  background: Mintcream;
+  min-height: 100px;
+  background-color: #fef7e5;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.navbar-title {
-  width: 50%;
-  margin-left: 2.4rem;
-  color: black;
-  font-family: "Montserrat", sans-serif;
-  font-size: 3rem;
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
+.menu-icon {
+  display: none;
 }
 
-.navbar-links {
+.nav-elements ul {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 2.4rem;
-  width: 50%;
-}
-.navbar-links .navbar-link {
-  color: black;
-  text-decoration: none;
-  margin: 0rem 1.8rem;
-  font-family: "Sofia Sans", sans-serif;
-  font-size: 1.1rem;
-  cursor: pointer;
+  justify-content: space-between;
+  list-style-type: none;
 }
 
+.nav-elements ul li:not(:last-child) {
+  margin-right: 60px;
+}
+
+.nav-elements ul a {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2f234f;
+  text-decoration: none;
+}
+
+.nav-elements ul a.active {
+  color: #574c4c;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-elements ul a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #574c4c;
+}
+
+@media (max-width: 768px) {
+  .nav-elements ul li:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+  .nav-elements {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #fef7e5;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+  .nav-elements.active {
+    width: 270px;
+  }
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+}
 .stories {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 10vh;
 }
 
 .story-one, .story-two {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10vh;
-  height: 90vh;
+  height: 100vh;
   font-family: "Unbounded", sans-serif;
 }
 .story-one h1, .story-two h1 {
@@ -133,6 +223,49 @@
   color: white;
 }
 
+@media screen and (max-height: 900px) {
+  .story-two {
+    padding-bottom: 200vh;
+  }
+}
+@media screen and (max-width: 600px) {
+  .story-two {
+    height: 100vh;
+  }
+}
+@media screen and (max-width: 800px) {
+  .story-one {
+    padding-top: -10vh;
+    padding-bottom: 10vh;
+  }
+  .story-two {
+    padding-bottom: 40vh;
+  }
+}
+@media (max-height: 720px) {
+  .story-one {
+    padding-bottom: 30vh;
+  }
+  .story-two {
+    padding-bottom: 80vh;
+  }
+}
+@media (max-height: 570px) {
+  .story-one {
+    padding-bottom: 60vh;
+  }
+  .story-two {
+    padding-bottom: 130vh;
+  }
+}
+@media (max-height: 440px) {
+  .story-one {
+    padding-bottom: 80vh;
+  }
+  .story-two {
+    padding-bottom: 170vh;
+  }
+}
 .jump-a-line {
   display: none;
 }
@@ -179,12 +312,12 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  top: 10vh;
+  top: 0;
   z-index: -1;
   left: 0;
   margin: 0;
   padding: 0;
-  background: #a6a9e3;
+  background: #f9e0c9;
   overflow: hidden;
 }
 
@@ -194,7 +327,7 @@
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(212, 151, 121, 0.2);
   animation: animate 36s linear infinite;
 }
 
@@ -294,6 +427,7 @@
   margin: 1em;
   padding: 1em 1.6em 1.2em 1.6em;
   position: relative;
+  overflow-wrap: break-word;
   height: auto;
   background: white;
   cursor: pointer;
@@ -352,12 +486,19 @@
   justify-content: space-between;
 }
 
+@media (max-width: 600px) {
+  .artwork-card {
+    max-width: 80vw;
+  }
+  .card-bottom-details {
+    flex-direction: column;
+  }
+}
 .feed-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: auto;
-  padding-top: 10vh;
   background-color: #FFEFD5;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -484,6 +625,11 @@
   width: 83%;
 }
 
+@media (max-width: 600px) {
+  .search-components {
+    margin-left: 5rem;
+  }
+}
 .buttons-next-to-search-bar {
   display: flex;
 }
@@ -691,17 +837,22 @@
 .epic-name-ego-bloat {
   margin: 2rem 0 1rem 0;
   text-align: center;
+  width: 100vw;
+  overflow-wrap: break-word;
 }
 
 .epic-user-about {
+  white-space: pre-line;
   font-size: 1.05em;
   border-radius: 2px;
   max-width: 80%;
+  overflow-wrap: break-word;
   margin-bottom: 1em;
 }
 
 .skills-display {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin-top: 2em;
 }
@@ -710,12 +861,16 @@
   display: flex;
   flex-flow: center;
   max-width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .feedback-feature {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .profile-overlay-bottom {
@@ -923,12 +1078,9 @@
   align-items: center;
   height: auto;
   min-height: 90vh;
-  padding-top: 10vh;
-  background-color: #ffffff;
+  overflow-wrap: break-word;
+  background-color: #f8f2e4;
   opacity: 1;
-  background-image: linear-gradient(30deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(150deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(30deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(150deg, #f1efeb 12%, transparent 12.5%, transparent 87%, #f1efeb 87.5%, #f1efeb), linear-gradient(60deg, rgba(241, 239, 235, 0.4666666667) 25%, transparent 25.5%, transparent 75%, rgba(241, 239, 235, 0.4666666667) 75%, rgba(241, 239, 235, 0.4666666667)), linear-gradient(60deg, rgba(241, 239, 235, 0.4666666667) 25%, transparent 25.5%, transparent 75%, rgba(241, 239, 235, 0.4666666667) 75%, rgba(241, 239, 235, 0.4666666667));
-  background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 
 .tabs-wrapper {
@@ -984,6 +1136,7 @@
 .artwork-body {
   margin-bottom: 2em;
   position: relative;
+  overflow-wrap: break-word;
 }
 
 .artwork-body::after {
@@ -1372,6 +1525,11 @@
   margin-bottom: 0.5em;
 }
 
+@media (max-width: 600px) {
+  .commenter-details {
+    flex-direction: column;
+  }
+}
 .commenter-detail {
   margin-right: 1em;
   font-weight: bold;
@@ -1452,7 +1610,7 @@
 
 .feedback-box {
   width: 40vw;
-  min-width: 300px;
+  min-width: 100px;
   margin: 1em 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: Mintcream;
@@ -1476,7 +1634,7 @@
 }
 @media screen and (max-width: 700px) {
   .feedback-box {
-    width: 70vw;
+    width: 65vw;
   }
 }
 .feedback-details {
@@ -1489,6 +1647,11 @@
   font-weight: bold;
 }
 
+@media (max-width: 600px) {
+  .feedback-details {
+    flex-direction: column;
+  }
+}
 .overlay-wrapper {
   padding: 2em;
 }
@@ -1591,7 +1754,7 @@
   overflow-y: scroll;
   resize: none;
   width: 20%;
-  min-width: 24em;
+  min-width: 15em;
   min-height: 4em;
   background-color: Mintcream;
   border-radius: 5px;
@@ -1621,7 +1784,7 @@
   overflow-y: scroll;
   resize: none;
   width: 40%;
-  min-width: 24em;
+  min-width: 15em;
   min-height: 4em;
   background-color: Mintcream;
   border-radius: 5px;
@@ -1652,7 +1815,7 @@
   overflow-y: scroll;
   resize: none;
   width: 40%;
-  min-width: 24em;
+  min-width: 15em;
   min-height: 4em;
   background-color: Mintcream;
   border-radius: 5px;
@@ -1661,6 +1824,30 @@
 .big-textbox:focus {
   outline: none;
   border-color: black;
+}
+
+.select-menu {
+  max-width: 80vw;
+}
+
+.page-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.read-more-text {
+  display: block;
+  width: 100%;
+}
+
+.read-or-hide {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
 }
 
 body {
@@ -1731,6 +1918,11 @@ img {
   position: relative;
 }
 
+.fade-button {
+  border-color: rgb(64, 64, 64);
+  color: rgb(64, 64, 64);
+}
+
 .bordered-everywhere-button:hover {
   background-color: rgb(219, 217, 217);
 }
@@ -1740,6 +1932,18 @@ img {
   cursor: pointer;
   background-color: Mintcream;
   color: black;
+  font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
+  padding: 0.2em 1em;
+  padding-bottom: 0.3em;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.regular-button-disabled {
+  all: unset;
+  cursor: not-allowed;
+  background-color: Mintcream;
+  color: rgb(102, 102, 102);
   font-family: "Oswald", "Abel", Arial, Helvetica, sans-serif;
   padding: 0.2em 1em;
   padding-bottom: 0.3em;
@@ -1761,6 +1965,12 @@ img {
   border-radius: 3%;
 }
 
+.nice-checkbox {
+  height: 20px;
+  width: 20px;
+  margin: 0 5px 2px 2px;
+}
+
 .sleek-text {
   font-family: "Barlow", Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -1776,7 +1986,7 @@ img {
 }
 
 .fancy-title {
-  font-family: "Amatic SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Poppins", "Amatic SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 4em;
 }
 
