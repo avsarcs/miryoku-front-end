@@ -10,6 +10,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Feed from "./pages/Feed"
 import Logout from "./pages/Logout"
+import Footer from "./components/Footer"
 
 import RequireAuth from "./components/RequireAuth"
 import PersistLogin from "./components/PersistLogin"
@@ -53,6 +54,7 @@ export default function App() {
             </Route>
         
     </Routes>
+    <Footer/>
         </>
     )
 }
